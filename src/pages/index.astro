@@ -1,9 +1,12 @@
 ---
 import '../styles/global.css';
 import Layout from "@/layouts/main.astro"
+import HeroHome from '@/components/modules/hero-home';
 const content = {
   title: "homepage",
   description: "sandro"
 }
 ---
-<Layout content={content}></Layout>
+<Layout content={content}>
+  <HeroHome />
+</Layout>

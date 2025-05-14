@@ -2,7 +2,7 @@
 @import "tw-animate-css";
 
 @theme {
-  --font-sans: "Barlow", "sans-serif";
+  --font-sans: "Plus Jakarta Sans", "sans-serif";
 }
 
 @custom-variant dark (&:is(.dark *));
@@ -121,4 +121,10 @@
   body {
     @apply bg-background text-foreground;
   }
+  .container {
+    @apply mx-auto;
+  }
+  /* .container { */
+  /*   @apply mx-auto p-4 sm:p-6 lg:p-8 max-w-2xl; */
+  /* } */
 }
