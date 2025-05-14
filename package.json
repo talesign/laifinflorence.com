@@ -11,7 +11,7 @@
   "dependencies": {
     "@astrojs/mdx": "^4.2.6",
     "@astrojs/react": "^4.2.7",
-    "@fontsource/plus-jakarta-sans": "^5.2.5",
+    "@fontsource-variable/plus-jakarta-sans": "^5.2.5",
     "@radix-ui/react-dialog": "^1.1.13",
     "@radix-ui/react-navigation-menu": "^1.2.12",
     "@radix-ui/react-popover": "^1.1.13",

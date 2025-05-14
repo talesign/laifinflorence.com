@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { AlignRight, ChevronDown, Hamburger } from "lucide-react";
+import { AlignRight, ChevronDown } from "lucide-react";
 import { Button } from "../ui/button";
 import {
   Sheet,
@@ -22,6 +22,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../ui/sheet";
+import { PrimaryButton } from "../patterns/button";
 
 const navItems = [
   {
@@ -58,8 +59,8 @@ export default function Header() {
 
   if (!isMobile) {
     return (
-      <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 items-center justify-between">
+      <header className="container sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="content flex h-14 items-center justify-between">
           <a href="/" className="mr-6 flex items-center space-x-2">
             <span className="font-bold text-lg">Laif Apartments</span>
           </a>
@@ -97,9 +98,7 @@ export default function Header() {
             </NavigationMenu>
           </div>
           <div className="">
-            <Button asChild className="font-bold">
-              <a href="/consulenza">Richiedi una consulenza</a>
-            </Button>
+            <PrimaryButton href="/consulenza" label="Richiedi una consulenza" />
           </div>
         </div>
       </header>
@@ -118,7 +117,7 @@ export default function Header() {
               <AlignRight />
             </Button>
           </SheetTrigger>
-          <SheetContent className="w-[800px] sm:max-w-[80vw]">
+          <SheetContent className="w-[95vw] sm:max-w-[80vw]">
             <SheetHeader className="bg-accent">
               <SheetTitle>Laif Apartments</SheetTitle>
               <SheetDescription>Lorem ipsum sit dolor et amet</SheetDescription>
@@ -146,9 +145,10 @@ export default function Header() {
               )}
 
               <div className="block px-4 py-3 ">
-                <Button asChild className="font-bold">
-                  <a href="/consulenza">Richiedi una consulenza</a>
-                </Button>
+                <PrimaryButton
+                  href="/consulenza"
+                  label="Richiedi una consulenza"
+                />
               </div>
             </nav>
           </SheetContent>
