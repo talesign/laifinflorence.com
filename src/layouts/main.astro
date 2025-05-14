@@ -1,0 +1,118 @@
+---
+import { ClientRouter } from "astro:transitions";
+import '../styles/global.css';
+import '@fontsource/barlow/400.css';
+import '@fontsource/barlow/700.css';
+import Header from "@/components/modules/header"
+
+interface Props {
+  content: {
+    title: string;
+    description: string;
+    ogTitle?: string;
+    ogType?: "website" | "article";
+    ogDescription?: string;
+    ogImage?: string;
+    twitterTitle?: string;
+    twitterDescription?: string;
+    twitterImage?: string;
+    canonicalUrl?: string;
+  }
+}
+
+const { content } = Astro.props;
+const currentPageUrl = Astro.url.href;
+
+const validationErrors: string[] = [];
+const validationWarnings: string[] = [];
+
+// 1. Title Validation
+if (typeof content.title !== 'string' || content.title.trim() === '') {
+  validationErrors.push("'content.title' is required and must be a non-empty string.");
+} else {
+  if (content.title.length > 70) {
+    validationWarnings.push(`'content.title' ("${content.title}") is longer than 70 characters (${content.title.length}). Consider shortening for optimal display in search results.`);
+  }
+  if (content.title.length < 10) {
+    validationWarnings.push(`'content.title' ("${content.title}") is shorter than 10 characters (${content.title.length}). Ensure it is descriptive enough.`);
+  }
+}
+
+// 2. Description Validation
+if (typeof content.description !== 'string' || content.description.trim() === '') {
+  validationErrors.push("'content.description' is required and must be a non-empty string.");
+} else {
+  // The user's comment mentioned "around 150-160 characters"
+  if (content.description.length > 170) { // Allowing a little more leeway
+    validationWarnings.push(`'content.description' is longer than 170 characters (${content.description.length}). It might be truncated in search snippets.`);
+  }
+  if (content.description.length < 50) {
+    validationWarnings.push(`'content.description' is shorter than 50 characters (${content.description.length}). Aim for 150-160 characters for better SEO impact.`);
+  }
+}
+
+// 3. Canonical URL validation (if provided)
+if (content.canonicalUrl && (typeof content.canonicalUrl !== 'string' || (!content.canonicalUrl.startsWith('http://') && !content.canonicalUrl.startsWith('https://')))) {
+    validationWarnings.push(`'content.canonicalUrl' ("${content.canonicalUrl}") does not look like a valid absolute URL. It should start with http:// or https://.`);
+}
+
+// If there are critical validation errors, stop the build.
+if (validationErrors.length > 0) {
+  throw new Error(`\n--- SEO Meta Validation Failed ---\n- ${validationErrors.join('\n- ')}\n--------------------------------`);
+}
+
+// Log warnings to the console during build (especially useful in development)
+if (validationWarnings.length > 0 && import.meta.env.DEV) {
+  console.warn(`\n--- SEO Meta Validation Warnings for page: ${Astro.url.pathname} ---`);
+  validationWarnings.forEach(warning => console.warn(`- ${warning}`));
+  console.warn("-----------------------------------------------------\n");
+}
+
+const websiteName = "LAIF Apartments"
+const title = content.title;
+const description = content.description;
+
+const ogTitle = content.ogTitle || title;
+const ogDescription = content.ogDescription || description;
+const ogImage = content.ogImage || "https://placehold.co/1200x630"
+const ogType = content.ogType;
+
+const twitterTitle = content.twitterTitle || title;
+const twitterDescription = content.twitterDescription || description;
+const twitterImage = content.twitterImage || "https://placehold.co/1200x630"
+
+const canonicalLink = content.canonicalUrl || currentPageUrl;
+---
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalLink} />
+
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={currentPageUrl} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={websiteName} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={twitterTitle} />
+    <meta name="twitter:description" content={twitterDescription} />
+    <meta name="twitter:image" content={twitterImage} />
+    <meta name="twitter:site" content="@olivertaleghani" />
+    <meta name="twitter:creator" content="@olivertaleghani" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> {/* Make sure favicon.svg is in your public folder */}
+    <ClientRouter />
+</head>
+<body transition:name="root" transition:animate="fade">
+    <Header client:load />
+    <slot />
+</body>
+</html>
