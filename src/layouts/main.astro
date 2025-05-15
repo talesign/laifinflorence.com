@@ -2,7 +2,7 @@
 import { ClientRouter } from "astro:transitions";
 import '../styles/global.css';
 import '@fontsource-variable/plus-jakarta-sans';
-import Header from "@/components/modules/header"
+import Header from "@/components/sections/header"
 
 interface Props {
   content: {
@@ -110,7 +110,7 @@ const canonicalLink = content.canonicalUrl || currentPageUrl;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> {/* Make sure favicon.svg is in your public folder */}
     <ClientRouter />
 </head>
-<body >
+<body class="bg-slate-50 ">
     <Header client:load />
     <slot transition:name="root" transition:animate="fade" />
 </body>
