@@ -1,6 +1,5 @@
 import { type LucideProps } from "lucide-react";
 import { SecondaryLabel } from "./label";
-import { cn } from "@/lib/utils";
 
 export type Props = {
   image: string;

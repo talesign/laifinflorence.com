@@ -1,6 +1,6 @@
 import type { ButtonProps } from "@/components/patterns/button";
 import type { LabelProps } from "@/components/patterns/label";
-import { BadgeCheck, User } from "lucide-react";
+import { BadgeCheck, Home, Star, User } from "lucide-react";
 import type { ResultNumberProps } from "@/components/patterns/result-number";
 
 ////////////////////////////////////////////////////////////
@@ -77,4 +77,51 @@ export const homeSplitSection = {
   } as ButtonProps,
   image:
     "https://cdn.prod.website-files.com/65e5e5474c606fdc3f19a597/65e89d505017a8de2be772fa_the-best-way-to-find-your-perfect-home-image-property-x-webflow-template.jpg",
+};
+
+export type FeaturedApartmentsProps = typeof homeFeaturedApartments;
+export const homeFeaturedApartments = {
+  label: {
+    icon: Home,
+    label: "I nostri appartamenti",
+  },
+  title: "Check on all properties we have available",
+  description:
+    "Lorem ipsum dolor sit amet consectetur. Sit ut gravida aenean potenti. Metus in eu vel morbi dui nunc tellus. Non a massa maecenas massa.",
+  primaryButton: {
+    label: "Scopri di più",
+    href: "appartamenti",
+  } as ButtonProps,
+  secondaryButton: {
+    label: "I servizi agli ospiti",
+    href: "servizi-ospiti",
+  } as ButtonProps,
+};
+
+export type CallToActionProps = typeof homeCallToAction;
+export const homeCallToAction = {
+  label: {
+    icon: Star,
+    label: "Richiedi una consulenza",
+  } as LabelProps,
+  title: "Explore your dream home today",
+  description:
+    "Lorem ipsum dolor sit amet consectetur. Sit ut gravida aenean potenti. Metus in eu vel morbi dui nunc tellus. Non a massa maecenas massa.",
+  button: {
+    label: "Scopri di più",
+    href: "consulenza",
+  } as ButtonProps,
+  image:
+    "https://cdn.prod.website-files.com/65e5e5474c606fdc3f19a597/65e786e6fbfbdee6e30e5af1_discover-your-dream-home-now-image-property-x-webflow-template.jpg",
+};
+
+export const homeProcess = {
+  label: {
+    icon: Star,
+    label: "Richiedi una consulenza",
+  } as LabelProps,
+  button: {
+    label: "Scopri di più",
+    href: "consulenza",
+  } as ButtonProps,
 };

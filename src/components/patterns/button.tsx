@@ -18,6 +18,20 @@ export function PrimaryButton({ href, label }: ButtonProps) {
   );
 }
 
+export function PrimaryButtonAlt({ href, label }: ButtonProps) {
+  return (
+    <a
+      className="w-fit text-sm pl-4 pr-2 py-2 flex items-center gap-2 rounded-full bg-slate-100 hover:bg-slate-100/80 text-slate-900 font-semibold cursor-pointer "
+      href={href}
+    >
+      {label}
+      <div className="w-6 h-6 rounded-full bg-slate-800 text-slate-50 flex items-center justify-center">
+        <ArrowRight className="w-4 h-4" />
+      </div>
+    </a>
+  );
+}
+
 export function SecondaryButton({ href, label }: ButtonProps) {
   return (
     <a

@@ -5,9 +5,10 @@ import HeroSection from  "@/components/sections/homepage/hero.astro"
 import ResultsSection from "@/components/sections/results.astro"
 import ServicesSection from "@/components/sections/featured_services.astro"
 import AboutSection from "@/components/sections/split.astro"
+import ApartmentsSection from "@/components/sections/featured_apartments.astro"
+import CallToAction from "@/components/sections/call-to-action.astro"
 
-
-import { meta, homeHero, homeFeaturedservices, homeResults, homeSplitSection } from "@/content/static"
+import { meta, homeHero, homeFeaturedservices, homeResults, homeSplitSection, homeFeaturedApartments, homeCallToAction } from "@/content/static"
 
 const content = {
   title: meta.seoTitle,
@@ -21,5 +22,6 @@ const content = {
   <ResultsSection {...homeResults} />
   <ServicesSection {...homeFeaturedservices} />
   <AboutSection {...homeSplitSection} />
-
+  <ApartmentsSection {...homeFeaturedApartments} />
+  <CallToAction {...homeCallToAction} />
 </Layout>

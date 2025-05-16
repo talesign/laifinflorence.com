@@ -28,14 +28,12 @@ const servicesWithImage = await Promise.all(
   })
 )
 
-import type { FeaturedServicesProps } from "@/content/static"
-type Props = FeaturedServicesProps
+import type { FeaturedServicesProps as Props } from "@/content/static"
 const { label, title, description, button } = Astro.props
 ---
 <section class="rounded-4xl container bg-slate-900 container-padding">
   <div
-    class="content text-center my-16 flex flex-col gap-8 items-center
-    text-slate-50 font-semibold md:max-w-prose mx-auto"
+    class="content text-center my-16 flex flex-col gap-8 items-center text-slate-50 font-semibold md:max-w-prose mx-auto"
     >
     <SecondaryLabel icon={label.icon} label={label.label} />
     <h2 class="text-4xl">{title}</h2>
