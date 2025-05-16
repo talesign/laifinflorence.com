@@ -1,0 +1,53 @@
+---
+import { SecondaryButton } from "@/components/patterns/button";
+import { SecondaryLabel } from "@/components/patterns/label";
+import ServicesCarousel  from "@/components/patterns/services-carousel";
+
+import { getCollection } from "astro:content";
+import { getImage } from 'astro:assets';
+const servicesCollection = await getCollection("services", ({ data }) => {
+  return data.featured === true
+});
+
+const servicesWithImage = await Promise.all(
+  servicesCollection.map(async (service) => {
+    const imageAttrs = await getImage({
+      src: service.data.image,
+      alt: service.data.title,
+      width: 600,
+      height: 600,
+      aspectRatio: '16:9',
+      format: 'webp',
+    });
+    return {
+      ...service,
+        images: {
+          listing: imageAttrs
+        }
+      }
+  })
+)
+
+import type { FeaturedServicesProps } from "@/content/static"
+type Props = FeaturedServicesProps
+const { label, title, description, button } = Astro.props
+---
+<section class="rounded-4xl container bg-slate-900 container-padding">
+  <div
+    class="content text-center my-16 flex flex-col gap-8 items-center
+    text-slate-50 font-semibold md:max-w-prose mx-auto"
+    >
+    <SecondaryLabel icon={label.icon} label={label.label} />
+    <h2 class="text-4xl">{title}</h2>
+    <p class="">{description}</p>
+
+    <div>
+      <ServicesCarousel services={servicesWithImage} client:load />
+    </div>
+
+    <SecondaryButton
+      href={button.href}
+      label={button.label}
+    />
+  </div>
+</section>

@@ -22,7 +22,7 @@ type Props = {
 export default function ServicesCarousel({ services }: Props) {
   return (
     <Carousel
-      className="max-w-screen sm:container"
+      className="max-w-[95vw] sm:container"
       orientation="horizontal"
       opts={{
         align: "start",

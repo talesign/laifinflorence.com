@@ -24,13 +24,4 @@ const services = defineCollection({
     }),
 });
 
-const home = defineCollection({
-  loader: glob({ pattern: "home.md", base: "./src/content" }),
-  schema: ({ image }) =>
-    z.object({
-      seo_title: z.string(),
-      seo_description: z.string(),
-    }),
-});
-
-export const collections = { apartments, services, home };
+export const collections = { apartments, services };

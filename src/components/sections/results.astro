@@ -1,0 +1,37 @@
+---
+import { getImage } from 'astro:assets';
+import ResultNumber from "@/components/patterns/result-number";
+import SimpleCard from "@/components/patterns/simple-card";
+
+import type { ResultProps } from "@/content/static"
+type Props = ResultProps
+const { resultOne, resultTwo, title, description, image } = Astro.props
+
+const imageAttrs = await getImage({
+  src: image,
+  alt: title,
+  width: 600,
+  height: 600,
+  aspectRatio: '1:1',
+  format: 'webp',
+});
+---
+<section
+  class="container container-padding flex 
+  px-4 flex-col gap-8
+  md:px-0 md:flex-row-reverse md:gap-16"
+>
+  <SimpleCard
+    img={imageAttrs.src}
+    title={title}
+    description={description}
+  />
+  <div
+    class="flex gap-8
+    flex-col 
+    md:flex-row"
+  >
+    <ResultNumber {...resultOne} />
+    <ResultNumber {...resultTwo} />
+  </div>
+</section>

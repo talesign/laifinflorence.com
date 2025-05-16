@@ -1,4 +1,4 @@
-type Props = {
+export type ResultNumberProps = {
   title: string;
   description: string;
   number: string;
@@ -10,7 +10,7 @@ export default function ResultNumber({
   description,
   number,
   unit,
-}: Props) {
+}: ResultNumberProps) {
   return (
     <>
       <div>

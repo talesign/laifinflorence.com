@@ -1,0 +1,39 @@
+---
+import { getImage } from 'astro:assets';
+import { PrimaryButton, SecondaryButton } from "@/components/patterns/button";
+
+import type { HomeHeroProps as Props } from "@/content/static"
+const { title, description, primaryButton, secondaryButton, image } = Astro.props
+const imageAttrs = await getImage({
+  src: image,
+  alt: title,
+  width: 10,
+  height: 10,
+  aspectRatio: '1:1',
+  format: 'webp',
+});
+---
+<section>
+  <div
+    class=`container text-accent grid 
+    bg-bottom bg-contain bg-no-repeat bg-[#65acd6] rounded-b-4xl
+    md:bg-center md:bg-cover md:rounded-4xl 
+    bg-[url(${imageAttrs.src})]`
+  >
+    <div
+      class="content grid items-center gap-16
+      pt-[50px] pb-[400px] 
+      md:pt-[100px] md:pb-[700px] xl:grid-cols-2 
+      "
+    >
+      <h1 class="font-semibold text-5xl xl:text-6xl tracking-tighter">{title}</h1>
+      <div>
+        <p>{description}</p>
+        <div class="flex pt-4">
+          <PrimaryButton {...primaryButton} />
+          <SecondaryButton {...secondaryButton} />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

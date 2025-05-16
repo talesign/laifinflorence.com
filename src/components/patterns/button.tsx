@@ -1,6 +1,6 @@
 import { ArrowRight, ChevronRight } from "lucide-react";
 
-type ButtonProps = {
+export type ButtonProps = {
   href: string;
   label: string;
 };

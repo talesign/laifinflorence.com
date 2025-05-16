@@ -1,48 +1,25 @@
 ---
 import '../styles/global.css';
 import Layout from "@/layouts/main.astro"
-import HeroHome from '@/components/sections/homepage/hero';
-import ResultSection from '@/components/sections/homepage/results';
-import ServicesDisplay from '@/components/sections/homepage/services';
-import AboutSection from '@/components/sections/homepage/about'
-import { getCollection } from "astro:content";
-import { getImage } from 'astro:assets';
-const servicesCollection = await getCollection("services", ({ data }) => {
-  return data.featured === true
-});
+import HeroSection from  "@/components/sections/homepage/hero.astro"
+import ResultsSection from "@/components/sections/results.astro"
+import ServicesSection from "@/components/sections/featured_services.astro"
+import AboutSection from "@/components/sections/split.astro"
 
-// const file = (await Astro.glob("../content/home.md"))[0]
-// file.frontmatter.seo_title
-const homeContent = (await getCollection("home"))[0]
 
-const servicesWithImage = await Promise.all(
-  servicesCollection.map(async (service) => {
-    const imageAttrs = await getImage({
-      src: service.data.image,
-      alt: service.data.title,
-      width: 600,
-      height: 600,
-      aspectRatio: '16:9',
-      format: 'webp',
-    });
-    return {
-      ...service,
-        images: {
-          listing: imageAttrs
-        }
-      }
-  })
-)
+import { meta, homeHero, homeFeaturedservices, homeResults, homeSplitSection } from "@/content/static"
 
 const content = {
-  title: homeContent.data.seo_title,
+  title: meta.seoTitle,
   description: "sandro"
 }
 
+
 ---
 <Layout content={content}>
-  <HeroHome />
-  <ResultSection />
-  <ServicesDisplay client:load services={servicesWithImage} />
-  <AboutSection />
+  <HeroSection {...homeHero} />
+  <ResultsSection {...homeResults} />
+  <ServicesSection {...homeFeaturedservices} />
+  <AboutSection {...homeSplitSection} />
+
 </Layout>
