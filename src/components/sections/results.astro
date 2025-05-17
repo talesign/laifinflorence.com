@@ -17,9 +17,9 @@ const imageAttrs = await getImage({
 });
 ---
 <section
-  class="container container-padding flex 
+  class="container container-padding container-margin flex 
   px-4 flex-col gap-8
-  md:px-0 md:flex-row-reverse md:gap-16"
+  md:px-0 md:flex-row-reverse md:gap-16 justify-between"
 >
   <SimpleCard
     img={imageAttrs.src}
@@ -27,8 +27,8 @@ const imageAttrs = await getImage({
     description={description}
   />
   <div
-    class="flex gap-8
-    flex-col 
+    class="flex gap-8 justify-self-start
+    flex-col
     md:flex-row"
   >
     <ResultNumber {...resultOne} />

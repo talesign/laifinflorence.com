@@ -1,14 +1,9 @@
 ---
-import { PrimaryButton, SecondaryButton } from "../patterns/button";
-import { PrimaryLabel } from "../patterns/label";
-import ApartmentCard from "../patterns/apartment-card";
-
+import { PrimaryLabel } from "@/components/patterns/label";
+import ApartmentCard from "@/components/patterns/apartment-card";
 import { getCollection } from "astro:content";
 import { getImage } from 'astro:assets';
-const apartmentsCollection = await getCollection("apartments", ({ data }) => {
-  return data.featured === true
-});
-
+const apartmentsCollection = await getCollection("apartments");
 const apartmentsWithImage = await Promise.all(
   apartmentsCollection.map(async (apartment) => {
     const imageAttrsArray = await Promise.all(
@@ -32,8 +27,8 @@ const apartmentsWithImage = await Promise.all(
   })
 )
 
-import type { FeaturedApartmentsProps as Props }  from "@/content/static"
-const { label, title, description, primaryButton, secondaryButton } = Astro.props
+import type { ApartmentsListProps as Props} from "@/content/static";
+const { label, title, description } = Astro.props
 ---
 <section class="container container-padding container-margin">
   <div class="text-center flex flex-col items-center gap-4 mx-auto md:w-xl">
@@ -44,16 +39,12 @@ const { label, title, description, primaryButton, secondaryButton } = Astro.prop
     >{title}</h2>
     <p>{description}</p>
   </div>
-  <div class="grid gap-8 py-12
+  <div class="grid gap-8 pt-8
     grid-cols-1 p-4
     md:grid-cols-2">
     {apartmentsWithImage.map((apartment) => (
       <ApartmentCard item={apartment} client:load />
     ))}
-  </div>
-  <div class="w-full flex justify-center gap-4 ">
-    <PrimaryButton {...primaryButton} />
-    <SecondaryButton {...secondaryButton} />
   </div>
 </section>
 

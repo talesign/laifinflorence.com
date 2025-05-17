@@ -22,7 +22,7 @@ type Props = {
 export default function ServicesCarousel({ services }: Props) {
   return (
     <Carousel
-      className="max-w-[95vw] sm:container"
+      className="max-w-[95vw] xl:w-6xl "
       orientation="horizontal"
       opts={{
         align: "start",
@@ -30,7 +30,7 @@ export default function ServicesCarousel({ services }: Props) {
     >
       <CarouselContent>
         {services.map((service) => (
-          <CarouselItem key={service.id}>
+          <CarouselItem key={service.id} className="xl:basis-1/2">
             <div className="p-4">
               <ServiceCard
                 title={service.data.title}

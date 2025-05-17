@@ -1,0 +1,56 @@
+---
+import { getImage } from 'astro:assets';
+import ResultNumber from "@/components/patterns/result-number";
+import { PrimaryButton, SecondaryButton } from "@/components/patterns/button";
+import type { AboutHeroProps as Props } from "@/content/static"
+const { title, description, primaryButton, secondaryButton, imageBig, imageSmall } = Astro.props
+import { homeResults } from '@/content/static';
+
+const imageSmallAttrs = await getImage({
+  src: imageSmall,
+  alt: title,
+  width: 10,
+  height: 10,
+  aspectRatio: '1:1',
+  format: 'webp',
+});
+
+const imageBigAttrs = await getImage({
+  src: imageBig,
+  alt: title,
+  width: 10,
+  height: 10,
+  aspectRatio: '1:1',
+  format: 'webp',
+});
+
+
+---
+<section class="container container-padding container-margin">
+  <div class="p-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-8">
+      <div>
+        <h1 class="text-4xl md:text-6xl font-semibold">{title}</h1>
+      </div>
+      <div>
+        <p>{description}</p>
+        <div class="flex flex-col md:flex-row pt-4 gap-4">
+          <PrimaryButton {...primaryButton} />
+          <SecondaryButton {...secondaryButton} />
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <img class="w-full h-full object-cover rounded-4xl" src={imageSmallAttrs.src} alt={imageSmallAttrs.attributes.alt} />
+      <img class="w-full h-full object-cover rounded-4xl row-span-2" src={imageBigAttrs.src} alt={imageBigAttrs.attributes.alt} />
+      <div
+        class="flex gap-8 justify-self-start
+        flex-col
+        md:flex-row"
+      >
+        <ResultNumber {...homeResults.resultOne} />
+        <ResultNumber {...homeResults.resultTwo} />
+      </div>
+    </div>
+  </div>
+</section>

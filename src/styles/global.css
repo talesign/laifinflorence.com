@@ -130,4 +130,7 @@
   .container-padding {
     @apply py-16;
   }
+  .container-margin {
+    @apply my-8;
+  }
 }

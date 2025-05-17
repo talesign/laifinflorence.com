@@ -1,0 +1,26 @@
+---
+import type { GalleryProps as Props } from "@/content/static";
+const { images } = Astro.props
+import { getImage } from 'astro:assets';
+const imagesAttrs = await Promise.all(images.map(async (image) => {
+  const imageAttrs = await getImage({
+    src: image.image,
+    alt: image.alt,
+    width: 600,
+    height: 600,
+    aspectRatio: "1x1",
+    format: "webp"
+  })
+  return {
+    ...imageAttrs
+  }
+}))
+---
+<section class="container container-margin py-2">
+  <div class="grid grid-cols-3 gap-2">
+    <img class="object-cover rounded-2xl shadow row-span-2 size-full" src={imagesAttrs[0].src} alt={imagesAttrs[0].src} />
+    <img class="object-cover rounded-2xl shadow size-full" src={imagesAttrs[1].src} alt={imagesAttrs[1].src} />
+    <img class="object-cover rounded-2xl shadow row-span-2 size-full" src={imagesAttrs[2].src} alt={imagesAttrs[2].src} />
+    <img class="object-cover rounded-2xl shadow size-full" src={imagesAttrs[3].src} alt={imagesAttrs[3].src} />
+  </div>
+</section>

@@ -15,21 +15,22 @@ const imageAttrs = await getImage({
 ---
 <section>
   <div
-    class=`container text-accent grid 
-    bg-bottom bg-contain bg-no-repeat bg-[#65acd6] rounded-b-4xl
-    md:bg-center md:bg-cover md:rounded-4xl 
-    bg-[url(${imageAttrs.src})]`
+    class="container container-padding container-margin text-slate-900 grid 
+    bg-bottom bg-contain bg-no-repeat bg-[#eeeeee] rounded-b-4xl
+    md:bg-center md:bg-cover md:rounded-4xl"
+    style={{
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url(${imageAttrs.src})`,
+    }}
   >
     <div
-      class="content grid items-center gap-16
-      pt-[50px] pb-[400px] 
-      md:pt-[100px] md:pb-[700px] xl:grid-cols-2 
-      "
+      class="content grid items-center gap-8
+      pb-[300px] 
+      md:pb-[500px] xl:grid-cols-2"
     >
-      <h1 class="font-semibold text-5xl xl:text-6xl tracking-tighter">{title}</h1>
+      <h1 class="font-semibold text-4xl md:text-6xl tracking-tighter">{title}</h1>
       <div>
         <p>{description}</p>
-        <div class="flex pt-4">
+        <div class="flex flex-col md:flex-row pt-4 gap-4">
           <PrimaryButton {...primaryButton} />
           <SecondaryButton {...secondaryButton} />
         </div>

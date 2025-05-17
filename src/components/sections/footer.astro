@@ -1,0 +1,52 @@
+---
+import type { FooterProps as Props } from "@/content/static"
+const { businessData, pagesOne, pagesTwo, contacts, socials  } = Astro.props
+---
+<footer class="container container-padding">
+  <div class="bg-slate-900 rounded-4xl text-slate-50 p-16 grid gap-16
+    grid-cols-1
+    md:grid-cols-3
+    ">
+    <div>
+      <p class="text-xl mb-3 font-bold">Laif</p>
+      <p class="py-1 mb-0.5">{businessData.name}</p>
+      <p class="py-1 mb-0.5">{businessData.addressOne}</p>
+      <p class="py-1 mb-0.5">{businessData.addressTwo}</p>
+      <p class="py-1 mb-0.5">{businessData.vat}</p>
+    </div>
+    <div>
+      <p class="text-xl mb-3 font-semibold">Pagine</p>
+      {pagesOne.map((page) => (
+        <a class="block py-1 mb-0.5 hover:text-slate-50/50 transition-colors" href={page.href}>{page.label}</a>
+      ))}
+    </div>
+    <div>
+      <p class="text-xl mb-3 font-semibold">Utilità</p>
+      {pagesTwo.map((page) => (
+        <a class="block py-1 mb-0.5 hover:text-slate-50/50 transition-colors" href={page.href}>{page.label}</a>
+      ))}
+    </div>
+    <div></div>
+    <div>
+      <p class="text-xl mb-3 font-semibold">Contatti</p>
+      {contacts.map((contact) => (
+      <a class="flex items-center gap-2 py-1 mb-0.5 hover:text-slate-50/50 transition-colors" href={contact.href}>
+        <contact.icon className="w-4 h-4" />
+        {contact.label}
+      </a>
+      ))}
+    </div>
+    <div>
+      <p class="text-xl mb-3 font-semibold">Social</p>
+      <div class="flex gap-4 items-center">
+        {socials.map((social) => (
+          <a class="hover:text-slate-50/50 transition-colors" href={social.link}>
+            <social.icon className="w-6 h-6" />
+          </a>
+        ))}
+      </div>
+    </div>
+
+  </div>
+
+</footer>

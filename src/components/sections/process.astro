@@ -1,3 +1,90 @@
 ---
-
+import { Image } from "astro:assets"
+import type { ProcessProps as Props} from "@/content/static"
+import { PrimaryButton } from "../patterns/button"
+import { PrimaryLabel } from "../patterns/label"
+const { label, button, title, tabOne, tabTwo, tabThree } = Astro.props
 ---
+<section class="container container-padding container-margin">
+  <div class="grid md:grid-cols-2 items-end p-4">
+    <div>
+      <PrimaryLabel {...label} />
+      <h2 class="font-semibold pt-4
+        text-3xl
+        md:text-5xl"
+      >{title}</h2>
+    </div>
+    <div class="flex items-end justify-end">
+      <PrimaryButton {...button} />
+    </div>
+  </div>
+  <div class="pt-16 grid grid-cols-1 gap-16">
+    <div class="p-4 items-center grid grid-cols-1 gap-4 text-center md:grid-cols-2 md:gap-16 md:text-left ">
+      <div>
+        <h3 class="text-2xl font-semibold pb-2">{tabOne.title}</h3>
+        <p>{tabOne.description}</p>
+      </div>
+      <div class="relative pr-8">
+        <Image 
+          class="w-full rounded-4xl "
+          src="https://cdn.prod.website-files.com/65e5e5474c606fdc3f19a597/65e924f2f0b930d0e43bbb58_search-for-your-favorite-house-image-property-x-webflow-template.jpg" 
+          alt="First" 
+          width={500} 
+          height={500} />
+        <div class="absolute w-[40%] right-0 left-auto top-auto bottom-[11%] h-[80%]">
+          <Image 
+            class="rounded-4xl w-full h-full object-cover"
+            src="https://cdn.prod.website-files.com/65e5e5474c606fdc3f19a597/65e924f2f0b930d0e43bbb58_search-for-your-favorite-house-image-property-x-webflow-template.jpg" 
+            alt="First" 
+            width={500} 
+            height={500} />
+        </div>
+      </div>
+    </div>
+
+    <div class="p-4 items-center grid grid-cols-1 gap-4 text-center md:grid-cols-2 md:gap-16 md:text-left ">
+        <div>
+          <h3 class="text-2xl font-semibold pb-2">{tabTwo.title}</h3>
+          <p>{tabTwo.description}</p>
+        </div>
+      <div class="relative pr-8">
+        <Image 
+          class="w-full rounded-4xl "
+          src="https://cdn.prod.website-files.com/65e5e5474c606fdc3f19a597/65e924f2f0b930d0e43bbb58_search-for-your-favorite-house-image-property-x-webflow-template.jpg" 
+          alt="First" 
+          width={500} 
+          height={500} />
+        <div class="absolute w-[80%] right-0 left-auto top-auto bottom-[11%] h-[20%]">
+          <Image 
+            class="rounded-4xl w-full h-full object-cover"
+            src="https://cdn.prod.website-files.com/65e5e5474c606fdc3f19a597/65e924f2f0b930d0e43bbb58_search-for-your-favorite-house-image-property-x-webflow-template.jpg" 
+            alt="First" 
+            width={500} 
+            height={500} />
+        </div>
+      </div>
+    </div>
+    <div class="p-4 items-center grid grid-cols-1 gap-4 text-center md:grid-cols-2 md:gap-16 md:text-left ">
+        <div>
+          <h3 class="text-2xl font-semibold pb-2">{tabThree.title}</h3>
+          <p>{tabThree.description}</p>
+        </div>
+      <div class="relative pr-8">
+        <Image 
+          class="w-full rounded-4xl "
+          src="https://cdn.prod.website-files.com/65e5e5474c606fdc3f19a597/65e924f2f0b930d0e43bbb58_search-for-your-favorite-house-image-property-x-webflow-template.jpg" 
+          alt="First" 
+          width={500} 
+          height={500} />
+        <div class="absolute w-[40%] right-0 left-auto top-auto bottom-[11%] h-[40%]">
+          <Image 
+            class="rounded-4xl w-full h-full object-cover"
+            src="https://cdn.prod.website-files.com/65e5e5474c606fdc3f19a597/65e924f2f0b930d0e43bbb58_search-for-your-favorite-house-image-property-x-webflow-template.jpg" 
+            alt="First" 
+            width={500} 
+            height={500} />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

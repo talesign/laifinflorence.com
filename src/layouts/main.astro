@@ -3,6 +3,8 @@ import { ClientRouter } from "astro:transitions";
 import '../styles/global.css';
 import '@fontsource-variable/plus-jakarta-sans';
 import Header from "@/components/sections/header"
+import Footer from "@/components/sections/footer.astro"
+import { footer } from "@/content/static"
 
 interface Props {
   content: {
@@ -84,7 +86,7 @@ const canonicalLink = content.canonicalUrl || currentPageUrl;
 ---
 
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
@@ -109,9 +111,10 @@ const canonicalLink = content.canonicalUrl || currentPageUrl;
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> {/* Make sure favicon.svg is in your public folder */}
     <ClientRouter />
-</head>
-<body class="bg-slate-50 ">
+  </head>
+  <body class="bg-slate-100 ">
     <Header client:load />
-    <slot transition:name="root" transition:animate="fade" />
-</body>
+      <slot transition:name="root" transition:animate="fade" />
+    <Footer {...footer} />
+  </body>
 </html>

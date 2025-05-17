@@ -1,0 +1,22 @@
+---
+import FaqsAccordion from "../patterns/faqs-accordion";
+import { PrimaryLabel } from "../patterns/label";
+import type { FaqsSectionProps as Props } from "@/content/static"
+const { label, title, description, faqs} = Astro.props
+---
+<section class="container container-padding container-margin">
+  <div class="p-4">
+    <div class="text-center flex flex-col items-center gap-4 mx-auto md:w-xl pb-8">
+      <PrimaryLabel {...label} />
+      <h2 class="font-semibold
+        text-3xl
+        md:text-5xl"
+      >{title}</h2>
+      <p>{description}</p>
+    </div>
+    <div class="bg-slate-50 rounded-4xl">
+      <FaqsAccordion faqs={faqs} client:load />
+    </div>
+
+  </div>
+</section>

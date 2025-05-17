@@ -10,7 +10,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { useIsMobile } from "@/hooks/useIsMobile";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { AlignRight, ChevronDown } from "lucide-react";
 import { Button } from "../ui/button";
@@ -30,12 +29,12 @@ const navItems = [
     subItems: [
       {
         title: "Per i proprietari",
-        href: "/servizi-proprietari",
+        href: "/servizi",
         description: "Lorem ipsum sit dolor et amet",
       },
       {
         title: "Per gli ospiti",
-        href: "/servizi-ospiti",
+        href: "/appartamenti#servizi",
         description: "Lorem ipsum sit dolor et amet",
       },
     ],
@@ -55,11 +54,9 @@ const navItems = [
 ];
 
 export default function Header() {
-  const isMobile = useIsMobile();
-
-  if (!isMobile) {
-    return (
-      <header className="container z-50 w-full bg-slate-50">
+  return (
+    <>
+      <header className="container z-50 w-full hidden xl:block">
         <div className="content flex h-14 items-center justify-between">
           <a href="/" className="mr-6 flex items-center space-x-2">
             <span className="font-bold text-lg">Laif Apartments</span>
@@ -102,59 +99,62 @@ export default function Header() {
           </div>
         </div>
       </header>
-    );
-  }
 
-  return (
-    <header className="container z-50 w-full ">
-      <div className="content flex h-14 items-center justify-between">
-        <a href="/" className="mr-6 flex items-center space-x-2">
-          <span className="font-bold text-lg">Laif Apartments</span>
-        </a>
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant="secondary">
-              <AlignRight />
-            </Button>
-          </SheetTrigger>
-          <SheetContent className="w-[95vw] sm:max-w-[80vw]">
-            <SheetHeader className="bg-accent">
-              <SheetTitle>Laif Apartments</SheetTitle>
-              <SheetDescription>Lorem ipsum sit dolor et amet</SheetDescription>
-            </SheetHeader>
-            <nav>
-              {navItems.map((item) =>
-                item.subItems ? (
-                  <div key={item.title}>
-                    {item.subItems.map((subItem) => (
-                      <div className="block px-4 py-3 text-muted-foreground hover:text-foreground font-bold text-sm">
-                        <a key={subItem.title} href={subItem.href}>
-                          {subItem.title}
-                        </a>
+      <header className="container z-50 w-full block xl:hidden">
+        <div className="content flex h-14 items-center justify-between">
+          <a href="/" className="mr-6 flex items-center space-x-2">
+            <span className="font-bold text-lg">Laif Apartments</span>
+          </a>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="secondary">
+                <AlignRight />
+              </Button>
+            </SheetTrigger>
+            <SheetContent className="w-[95vw] sm:max-w-[80vw]">
+              <SheetHeader className="bg-accent">
+                <SheetTitle>Laif Apartments</SheetTitle>
+                <SheetDescription>
+                  Lorem ipsum sit dolor et amet
+                </SheetDescription>
+              </SheetHeader>
+              <nav>
+                {navItems.map((item) =>
+                  item.subItems ? (
+                    <div key={item.title}>
+                      <div className="block px-4 py-3 text-muted-foreground font-bold text-sm">
+                        {item.title}
                       </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div
-                    key={item.title}
-                    className="block px-4 py-3 text-muted-foreground hover:text-foreground font-bold text-sm"
-                  >
-                    <a href={item.href}>{item.title}</a>
-                  </div>
-                ),
-              )}
+                      {item.subItems.map((subItem) => (
+                        <div className="block px-4 py-3 text-muted-foreground hover:text-foreground font-bold text-sm">
+                          <a key={subItem.title} href={subItem.href}>
+                            {subItem.title}
+                          </a>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div
+                      key={item.title}
+                      className="block px-4 py-3 text-muted-foreground hover:text-foreground font-bold text-sm"
+                    >
+                      <a href={item.href}>{item.title}</a>
+                    </div>
+                  ),
+                )}
 
-              <div className="block px-4 py-3 ">
-                <PrimaryButton
-                  href="/consulenza"
-                  label="Richiedi una consulenza"
-                />
-              </div>
-            </nav>
-          </SheetContent>
-        </Sheet>
-      </div>
-    </header>
+                <div className="block px-4 py-3 ">
+                  <PrimaryButton
+                    href="/consulenza"
+                    label="Richiedi una consulenza"
+                  />
+                </div>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </header>
+    </>
   );
 }
 

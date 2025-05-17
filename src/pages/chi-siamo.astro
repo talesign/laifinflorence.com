@@ -1,11 +1,15 @@
 ---
 import '../styles/global.css';
 import Layout from "@/layouts/main.astro"
+import Hero from "@/components/sections/about/hero.astro"
+import Values from "@/components/sections/about/values.astro"
+import { aboutHero, aboutValues } from "@/content/static"
 const content = {
   title: "homepage",
   description: "sandro"
 }
 ---
 <Layout content={content}>
-  Chi siamo
+  <Hero {...aboutHero}/>
+  <Values {...aboutValues} />
 </Layout>
