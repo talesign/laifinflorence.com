@@ -28,4 +28,30 @@ const services = defineCollection({
     }),
 });
 
-export const collections = { apartments, services };
+const team = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/team" }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      surname: z.string(),
+      image: image(),
+      bgImage: image().optional(),
+      leadership: z.boolean(),
+      position: z.string(),
+      email: z.string(),
+      phone: z.string(),
+    }),
+});
+
+const collaborators = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/collaborators" }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      image: image(),
+      position: z.string(),
+      link: z.string(),
+    }),
+});
+
+export const collections = { apartments, services, team, collaborators };

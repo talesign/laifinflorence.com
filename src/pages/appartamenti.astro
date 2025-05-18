@@ -9,7 +9,7 @@ import CallToAction from "@/components/sections/call-to-action.astro"
 
 import { apartmentsMeta, apartmentsHero, apartmentsGallery, apartmentsList, apartmentsServicesToGuests, homeCallToAction } from "@/content/static"
 ---
-<Layout content={apartmentsMeta}>
+<Layout content={apartmentsMeta.content}>
   <Hero {...apartmentsHero}/>
   <Gallery {...apartmentsGallery} />
   <List {...apartmentsList} />

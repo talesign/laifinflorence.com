@@ -5,7 +5,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import ServiceCard, { type Props as ServiceProps } from "./service-card";
+import ServiceCard from "./service-card";
 import type { CollectionEntry } from "astro:content";
 import type { GetImageResult } from "astro";
 
@@ -32,12 +32,7 @@ export default function ServicesCarousel({ services }: Props) {
         {services.map((service) => (
           <CarouselItem key={service.id} className="xl:basis-1/2">
             <div className="p-4">
-              <ServiceCard
-                title={service.data.title}
-                description={service.data.description}
-                image={service.images.listing.src}
-                label={undefined}
-              />
+              <ServiceCard {...service} />
             </div>
           </CarouselItem>
         ))}

@@ -1,0 +1,17 @@
+---
+import { PrimaryLabel } from "@/components/patterns/label"
+import ContactForm from "@/components/patterns/form"
+import { contactHeroSection } from '@/content/static';
+import type { ConsultingHeroProps as Props } from "@/content/static"
+const { title, label, description } = Astro.props
+---
+<section class="container container-padding container-margin bg-slate-900 rounded-4xl ">
+  <div class="flex flex-col items-center text-slate-50 max-w-2xl mx-auto text-center gap-4 p-4">
+    <PrimaryLabel {...label} />
+    <h1 class="text-3xl md:text-6xl font-semibold">{title}</h1>
+    <p>{description}</p>
+  </div>
+  <div class="bg-slate-50 mx-auto max-w-2xl rounded-2xl p-16 mt-16">
+    <ContactForm client:load {...contactHeroSection.form} />
+  </div>
+</section>

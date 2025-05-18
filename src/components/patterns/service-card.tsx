@@ -1,37 +1,24 @@
-import { type LucideProps } from "lucide-react";
-import { SecondaryLabel } from "./label";
+import type { GetImageResult } from "astro";
+import type { CollectionEntry } from "astro:content";
 
-export type Props = {
-  image: string;
-  title: string;
-  description: string;
-  label?: {
-    icon: React.ElementType<LucideProps>;
-    label: string;
+type Props = CollectionEntry<"services"> & {
+  images: {
+    listing: GetImageResult;
   };
 };
 
-export default function ServiceCard({
-  image,
-  title,
-  description,
-  label,
-}: Props) {
+export default function ServiceCard(item: Props) {
   return (
     <article
       className="p-8 rounded-2xl flex flex-col h-96 justify-between bg-center bg-cover bg-no-repeat w-full"
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${item.images.listing.src})`,
       }}
     >
-      {label ? (
-        <SecondaryLabel label={label.label} icon={label.icon} />
-      ) : (
-        <div></div>
-      )}
+      <div></div>
       <div className="text-slate-50 text-left">
-        <h3 className="text-lg font-semibold pb-2">{title}</h3>
-        <p className="text-sm">{description}</p>
+        <h3 className="text-lg font-semibold pb-2">{item.data.title}</h3>
+        <p className="text-sm">{item.data.description}</p>
       </div>
     </article>
   );

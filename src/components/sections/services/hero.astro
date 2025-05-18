@@ -1,0 +1,28 @@
+---
+import { PrimaryLabel } from '@/components/patterns/label';
+import { getImage } from 'astro:assets';
+import type { ServicesHeroProps as Props } from "@/content/static"
+
+const { label, title, description, image } = Astro.props
+const imageAttrs = await getImage({
+  src: image,
+  alt: title,
+  width: 1200,
+  height: 800,
+  aspectRatio: '1:1',
+  format: 'webp',
+});
+---
+<section class="container container-margin">
+  <div class="grid grid-cols-1 ">
+    <img class="rounded-4xl col-start-1 col-end-1 row-start-1 row-end-1 w-full h-full object-cover" src={imageAttrs.src} {...imageAttrs.attributes} />
+    <div class="bg-slate-900/80 text-slate-50 col-start-1 col-end-1 row-start-1 row-end-1 rounded-4xl flex items-center">
+      <div class="container-padding px-4 md:px-16 flex flex-col items-center gap-4 max-w-2xl mx-auto text-center">
+        <PrimaryLabel {...label} />
+        <h1 class="font-semibold text-3xl md:text-5xl">{title}</h1>
+        <p>{description}</p>
+      </div>
+    </div>
+  </div>
+
+</section>

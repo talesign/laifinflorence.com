@@ -1,0 +1,51 @@
+---
+import { PrimaryLabel } from "@/components/patterns/label";
+import type { CollaboratorProps as Props } from "@/content/static";
+const { label, title, description } = Astro.props
+
+import { getCollection } from "astro:content";
+import { getImage } from "astro:assets";
+const collaboratorsCollection = await getCollection("collaborators")
+const collaboratorsWithImages = await Promise.all(
+  collaboratorsCollection.map(async (member) => {
+    const imageAttrs = await getImage({
+      src: member.data.image,
+      alt: member.data.name,
+      width: 600,
+      height: 600,
+      aspectRatio: '16:9',
+      format: 'webp',
+    });
+    return {
+      ...member,
+      images: {
+        listing: imageAttrs
+      }
+    }
+  })
+);
+---
+<section class="container container-padding container-margin">
+  <div class="p-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-8 items-end">
+      <div class="flex flex-col gap-4">
+        <PrimaryLabel {...label} />
+        <h1 class="text-4xl md:text-6xl font-semibold">{title}</h1>
+      </div>
+      <div>
+        <p>{description}</p>
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2">
+    {collaboratorsWithImages.map((member) => (
+      <article class="bg-slate-50 p-8 rounded-4xl">
+        <a href={member.data.link} class="flex flex-col gap-4">
+        <img class="invert w-[40%]" src={member.images.listing.src} {...member.images.listing.attributes} />
+          <h3 class="font-semibold text-xl ">{member.data.name}</h3>
+          <p>Reparto: {member.data.position}</p>
+        </a>
+      </article>
+    ))}
+  </div>
+</section>

@@ -3,7 +3,12 @@ import '../styles/global.css';
 import Layout from "@/layouts/main.astro"
 import Hero from "@/components/sections/about/hero.astro"
 import Values from "@/components/sections/about/values.astro"
-import { aboutHero, aboutValues } from "@/content/static"
+import Split from "@/components/sections/split-reverse.astro"
+import Leadership from "@/components/sections/about/leadership.astro"
+import Team from "@/components/sections/about/team.astro"
+import Collaborators from "@/components/sections/about/collaborators.astro"
+
+import { aboutHero, aboutValues, aboutSplitSection, aboutLeadershipSection, aboutTeamSection, aboutCollaboratorSection } from "@/content/static"
 const content = {
   title: "homepage",
   description: "sandro"
@@ -12,4 +17,8 @@ const content = {
 <Layout content={content}>
   <Hero {...aboutHero}/>
   <Values {...aboutValues} />
+  <Split {...aboutSplitSection} />
+  <Leadership {...aboutLeadershipSection} />
+  <Team {...aboutTeamSection} />
+  <Collaborators {...aboutCollaboratorSection} />
 </Layout>

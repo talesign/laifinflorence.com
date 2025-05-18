@@ -1,0 +1,48 @@
+---
+import { Separator } from "@/components/ui/separator"
+import ContactForm from "@/components/patterns/form"
+import type { ContactHeroProps as Props} from "@/content/static"
+const { title, description, contactOne, subtitle, subDescription, contactTwo, form } = Astro.props
+---
+<section class="container container-padding container-margin grid grid-cols-1 md:grid-cols-2 gap-16 p-4">
+  <div class="flex flex-col gap-4 ">
+    <h1 class="text-3xl md:text-5xl font-semibold">{title}</h1>
+    <p>{description}</p>
+    <div class="flex flex-col xl:flex-row gap-8 mt-4">
+      {contactOne.map((contact)=> (
+        <a href={contact.link} class="flex gap-4">
+          <contact.icon />
+          <div class="">
+            <div>
+              {contact.title}
+            </div>
+            <div class="font-semibold">
+              {contact.label}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+    <Separator className="my-4" />
+    <div class="text-2xl md:text-3xl font-semibold">{subtitle}</div>
+    <p>{subDescription}</p>
+    <div class="flex flex-col xl:flex-row gap-8 mt-4">
+      {contactTwo.map((contact)=> (
+        <a href={contact.link} class="flex gap-4">
+          <contact.icon />
+          <div class="">
+            <div>
+              {contact.title}
+            </div>
+            <div class="font-semibold">
+              {contact.label}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+  <div class="bg-slate-50 p-8 rounded-4xl">
+    <ContactForm client:load {...form} />
+  </div>
+</section>

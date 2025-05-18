@@ -1,9 +1,14 @@
 ---
 import '../styles/global.css';
 import Layout from "@/layouts/main.astro"
-const content = {
-  title: "homepage",
-  description: "sandro"
-}
+import Hero from "@/components/sections/services/hero.astro"
+import List from "@/components/sections/services/list.astro"
+import CallToAction from "@/components/sections/call-to-action.astro"
+import { servicesMeta, servicesHeroSection, servicesListSection, homeCallToAction } from "@/content/static"
+
 ---
-<Layout content={content}></Layout>
+<Layout content={servicesMeta.content}>
+  <Hero {...servicesHeroSection}/>
+  <List {...servicesListSection} />
+  <CallToAction {...homeCallToAction} />
+</Layout>

@@ -26,18 +26,19 @@ import { PrimaryButton } from "../patterns/button";
 const navItems = [
   {
     title: "Servizi",
-    subItems: [
-      {
-        title: "Per i proprietari",
-        href: "/servizi",
-        description: "Lorem ipsum sit dolor et amet",
-      },
-      {
-        title: "Per gli ospiti",
-        href: "/appartamenti#servizi",
-        description: "Lorem ipsum sit dolor et amet",
-      },
-    ],
+    href: "/servizi",
+    // subItems: [
+    //   {
+    //     title: "Per i proprietari",
+    //     href: "/servizi",
+    //     description: "Lorem ipsum sit dolor et amet",
+    //   },
+    //   {
+    //     title: "Per gli ospiti",
+    //     href: "/appartamenti#servizi",
+    //     description: "Lorem ipsum sit dolor et amet",
+    //   },
+    // ],
   },
   {
     title: "Chi siamo",

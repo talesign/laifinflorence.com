@@ -1,0 +1,65 @@
+---
+import { Mail, Phone } from "lucide-react";
+import { SecondaryLabel } from "@/components/patterns/label";
+import { PrimaryButtonAlt } from "@/components/patterns/button";
+
+import type { LeadershipSection as Props } from "@/content/static"
+const { label, title, description, button } = Astro.props
+
+import { getCollection } from "astro:content";
+import { getImage } from "astro:assets";
+const leadershipCollection = await getCollection("team", ({ data }) => {
+  return data.leadership === true
+});
+const leadershipWithImages = await Promise.all(
+  leadershipCollection.map(async (member) => {
+    const imageAttrs = await getImage({
+      src: member.data.bgImage as any,
+      alt: `${member.data.name} ${member.data.surname}`,
+      width: 600,
+      height: 600,
+      aspectRatio: '16:9',
+      format: 'webp',
+    });
+    return {
+      ...member,
+      images: {
+        listing: imageAttrs
+      }
+    }
+  })
+)
+---
+<section class="rounded-4xl container container-padding container-margin bg-slate-900 px-4 md:px-16">
+  <div class="text-slate-50 max-w-prose flex flex-col gap-4 pb-16">
+    <SecondaryLabel {...label}/>
+    <h2 class="pt-4 font-semibold
+      text-2xl
+      md:text-4xl 
+      ">{title}</h2>
+    <p>{description}</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4">
+    {leadershipWithImages.map((member) => (
+    <article class="grid grid-cols-1">
+      <img class="col-start-1 col-end-1 row-start-1 row-end-1 rounded-2xl object-cover" src={member.images.listing.src} {...member.images.listing.attributes} />
+      <div class="col-start-1 col-end-1 row-start-1 row-end-1 rounded-2xl bg-gradient-to-r from-slate-50 p-8 text-slate-900 flex flex-col gap-2">
+        <h3 class="text-xl font-semibold">{member.data.name} {member.data.surname}</h3>
+        <p>{member.data.position}</p>
+        <div class="flex flex-col gap-2 mt-8 text-sm">
+          <a class="flex gap-2 items-center">
+            <Mail className="w-4 h-4" />
+            {member.data.email}
+          </a>
+          <a class="flex gap-2 items-center">
+            <Phone className="w-4 h-4" />
+            {member.data.phone}
+          </a>
+        </div>
+      </div>
+    </article>
+    ))}
+  </div>
+</section>
+

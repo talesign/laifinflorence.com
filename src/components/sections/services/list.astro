@@ -1,0 +1,45 @@
+---
+import { PrimaryLabel } from "@/components/patterns/label";
+import ServiceCard from "@/components/patterns/service-card";
+import type { ServicesListProps as Props } from "@/content/static"
+const { label, title, description, button } = Astro.props
+
+import { getCollection } from "astro:content";
+import { getImage } from 'astro:assets';
+const servicesCollection = await getCollection("services")
+
+const servicesWithImage = await Promise.all(
+  servicesCollection.map(async (service) => {
+    const imageAttrs = await getImage({
+      src: service.data.image,
+      alt: service.data.title,
+      width: 600,
+      height: 600,
+      aspectRatio: '16:9',
+      format: 'webp',
+    });
+    return {
+      ...service,
+        images: {
+          listing: imageAttrs
+        }
+      }
+  })
+)
+---
+<section class="container container-padding container-margin">
+  <div class="p-4 sm:p-0">
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 xl:gap-32 relative">
+      <div class="flex flex-col gap-4 xl:sticky md:top-20 self-start">
+        <PrimaryLabel {...label} />
+        <h2 class="font-semibold text-3xl md:text-4xl">{title}</h2>
+        <p>{description}</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {servicesWithImage.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

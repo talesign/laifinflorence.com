@@ -6,7 +6,7 @@ import Header from "@/components/sections/header"
 import Footer from "@/components/sections/footer.astro"
 import { footer } from "@/content/static"
 
-interface Props {
+export interface LayoutProps {
   content: {
     title: string;
     description: string;
@@ -20,6 +20,7 @@ interface Props {
     canonicalUrl?: string;
   }
 }
+type Props = LayoutProps
 
 const { content } = Astro.props;
 const currentPageUrl = Astro.url.href;
