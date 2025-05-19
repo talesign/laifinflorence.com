@@ -1,33 +1,33 @@
 ---
 import { getImage } from 'astro:assets';
 import { PrimaryButton, SecondaryButton } from "@/components/patterns/button";
+import image from "@/content/home_hero.jpg"
 
 import type { HomeHeroProps as Props } from "@/content/static"
-const { title, description, primaryButton, secondaryButton, image } = Astro.props
+const { title, description, primaryButton, secondaryButton } = Astro.props
 const imageAttrs = await getImage({
   src: image,
   alt: title,
-  width: 10,
-  height: 10,
+  width: 1500,
+  height: 1500,
   aspectRatio: '1:1',
   format: 'webp',
 });
 ---
 <section>
   <div
-    class="container container-padding container-margin text-slate-900 grid 
-    bg-bottom bg-contain bg-no-repeat bg-[#eeeeee] rounded-b-4xl
-    md:bg-center md:bg-cover md:rounded-4xl"
+    class="container container-margin-hero grid text-slate-50
+    bg-bottom bg-contain md:bg-cover bg-no-repeat bg-[#eeeeee] rounded-b-4xl md:rounded-4xl"
     style={{
-      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url(${imageAttrs.src})`,
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), url(${imageAttrs.src})`,
     }}
   >
     <div
-      class="content grid items-center gap-8
+      class="card-spacing grid items-center gap-8
       pb-[300px] 
       md:pb-[500px] xl:grid-cols-2"
     >
-      <h1 class="font-semibold text-4xl md:text-6xl tracking-tighter">{title}</h1>
+      <h1 class="header-big">{title}</h1>
       <div>
         <p>{description}</p>
         <div class="flex flex-col md:flex-row pt-4 gap-4">

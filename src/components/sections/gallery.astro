@@ -1,13 +1,19 @@
 ---
 import type { GalleryProps as Props } from "@/content/static";
-const { images } = Astro.props
+import apartment_gallery_1 from "@/content/apartments_gallery_1.jpeg"
+import apartment_gallery_2 from "@/content/apartments_gallery_2.avif"
+import apartment_gallery_3 from "@/content/apartments_gallery_3.webp"
+import apartment_gallery_4 from "@/content/apartments_gallery_4.jpeg"
+
+const images = [apartment_gallery_1, apartment_gallery_2, apartment_gallery_3, apartment_gallery_4]
+
 import { getImage } from 'astro:assets';
 const imagesAttrs = await Promise.all(images.map(async (image) => {
   const imageAttrs = await getImage({
-    src: image.image,
-    alt: image.alt,
-    width: 600,
-    height: 600,
+    src: image,
+    alt: "",
+    width: 800,
+    height: 800,
     aspectRatio: "1x1",
     format: "webp"
   })

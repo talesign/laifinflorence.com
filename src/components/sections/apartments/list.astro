@@ -30,18 +30,14 @@ const apartmentsWithImage = await Promise.all(
 import type { ApartmentsListProps as Props} from "@/content/static";
 const { label, title, description } = Astro.props
 ---
-<section class="container container-padding container-margin">
+<section class="container container-padding container-margin p-4">
   <div class="text-center flex flex-col items-center gap-4 mx-auto md:w-xl">
     <PrimaryLabel {...label} />
-    <h2 class="font-semibold
-      text-3xl
-      md:text-5xl"
+    <h2 class="header-medium"
     >{title}</h2>
     <p>{description}</p>
   </div>
-  <div class="grid gap-8 pt-8
-    grid-cols-1 p-4
-    md:grid-cols-2">
+  <div class="grid gap-8 pt-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
     {apartmentsWithImage.map((apartment) => (
       <ApartmentCard item={apartment} client:load />
     ))}

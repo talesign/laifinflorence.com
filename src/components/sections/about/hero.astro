@@ -3,34 +3,38 @@ import { getImage } from 'astro:assets';
 import ResultNumber from "@/components/patterns/result-number";
 import { PrimaryButton, SecondaryButton } from "@/components/patterns/button";
 import type { AboutHeroProps as Props } from "@/content/static"
-const { title, description, primaryButton, secondaryButton, imageBig, imageSmall } = Astro.props
+
+import imageSmall from "@/content/about_gallery_1.jpeg"
+import imageBig from "@/content/about_gallery_2.avif"
+
+const { title, description, primaryButton, secondaryButton } = Astro.props
 import { homeResults } from '@/content/static';
 
 const imageSmallAttrs = await getImage({
   src: imageSmall,
   alt: title,
-  width: 10,
-  height: 10,
-  aspectRatio: '1:1',
+  width: 800,
+  height: 600,
+  aspectRatio: '16:9',
   format: 'webp',
 });
 
 const imageBigAttrs = await getImage({
   src: imageBig,
   alt: title,
-  width: 10,
-  height: 10,
+  width: 1000,
+  height: 1000,
   aspectRatio: '1:1',
   format: 'webp',
 });
 
 
 ---
-<section class="container container-padding container-margin">
+<section class="container container-padding container-margin-hero">
   <div class="p-4">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-8">
       <div>
-        <h1 class="text-4xl md:text-6xl font-semibold">{title}</h1>
+        <h1 class="header-big">{title}</h1>
       </div>
       <div>
         <p>{description}</p>

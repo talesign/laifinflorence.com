@@ -2,10 +2,11 @@
 import { getImage } from 'astro:assets';
 import ResultNumber from "@/components/patterns/result-number";
 import SimpleCard from "@/components/patterns/simple-card";
+import image from "@/content/team/lorenzo-ricchi.jpg"
 
 import type { ResultProps } from "@/content/static"
 type Props = ResultProps
-const { resultOne, resultTwo, title, description, image } = Astro.props
+const { resultOne, resultTwo, title, description } = Astro.props
 
 const imageAttrs = await getImage({
   src: image,

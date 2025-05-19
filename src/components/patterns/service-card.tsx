@@ -17,7 +17,7 @@ export default function ServiceCard(item: Props) {
     >
       <div></div>
       <div className="text-slate-50 text-left">
-        <h3 className="text-lg font-semibold pb-2">{item.data.title}</h3>
+        <h3 className="header-xsmall pb-2">{item.data.title}</h3>
         <p className="text-sm">{item.data.description}</p>
       </div>
     </article>

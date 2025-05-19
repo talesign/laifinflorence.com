@@ -3,7 +3,10 @@ import { getImage } from 'astro:assets';
 import { PrimaryLabel } from "../patterns/label";
 import { PrimaryButton } from "../patterns/button";
 import type { SplitSectionProps as Props } from "@/content/static";
-const { label, title, description, button, image } = Astro.props
+
+import image from "@/content/about_split.avif"
+
+const { label, title, description, button } = Astro.props
 const imageAttrs = await getImage({
   src: image,
   alt: title,

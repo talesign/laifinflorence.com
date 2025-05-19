@@ -12,8 +12,8 @@ const apartments = defineCollection({
       bathrooms: z.number(),
       beds: z.number(),
       guests: z.number(),
-      size: z.number(),
       featured: z.boolean(),
+      link: z.string(),
     }),
 });
 

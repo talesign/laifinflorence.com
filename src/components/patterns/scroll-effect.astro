@@ -1,0 +1,23 @@
+---
+---
+<section class="scroll-effect">
+  <slot />
+</section>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries. forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("scroll-effect-visible");
+        } else {
+          // entry.target.classList.remove("scroll-effect-visible");
+        }
+      });
+    }, {
+      threshold: 0.1,
+    }) 
+
+    const elements = document.querySelectorAll(".scroll-effect");
+    elements.forEach(el => observer.observe(el))
+  })
+</script>

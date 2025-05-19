@@ -26,12 +26,10 @@ const teamWithImages = await Promise.all(
   })
 );
 ---
-<section class="container container-padding container-margin">
+<section class="container container-padding container-margin p-4">
   <div class="text-center flex flex-col items-center gap-4 mx-auto md:w-xl">
     <PrimaryLabel {...label} />
-    <h2 class="font-semibold
-      text-3xl
-      md:text-5xl"
+    <h2 class="header-medium"
     >{title}</h2>
     <p>{description}</p>
   </div>
@@ -39,7 +37,7 @@ const teamWithImages = await Promise.all(
     {teamWithImages.map((member) => (
     <article class="bg-slate-50 flex flex-col gap-4 items-center p-8 md:p-16 rounded-2xl shadow">
       <img class="w-32 h-32 object-cover rounded-full" src={member.images.listing.src} {...member.images.listing.attributes} />
-      <h3 class="text-xl font-semibold">{member.data.name} {member.data.surname}</h3>
+      <h3 class="header-xsmall">{member.data.name} {member.data.surname}</h3>
       <p class="">{member.data.position}</p>
       <div class="flex gap-2">
         {member.data.email && (

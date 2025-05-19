@@ -15,19 +15,23 @@ type ApartmentCardProps = {
 
 export default function ApartmentCard({ item }: ApartmentCardProps) {
   return (
-    <article>
-      <ApartmentGalleryCarousel gallery={item.images.gallery} />
-      <h3 className="font-semibold text-2xl pt-4 pb-2">{item.data.name}</h3>
-      <div className="flex gap-2 items-center">
-        <MapPin className="w-4 h-4" />
-        <span>{item.data.address}</span>
+    <article className="h-full flex flex-col justify-between">
+      <div>
+        <ApartmentGalleryCarousel gallery={item.images.gallery} />
+        <h3 className="header-xsmall pt-4 pb-2">{item.data.name}</h3>
       </div>
-      <Separator className="my-4 bg-slate-300" />
-      <div className="flex gap-6 text-slate-400 text-sm">
-        <ApartmentIcon icon={Scaling} data={`${item.data.size} mq`} />
-        <ApartmentIcon icon={Bath} data={`${item.data.bathrooms}`} />
-        <ApartmentIcon icon={Bed} data={`${item.data.beds}`} />
-        <ApartmentIcon icon={Users} data={`${item.data.guests}`} />
+      <div className="justify-self-end">
+        <div className="flex gap-2 items-center">
+          <MapPin className="w-4 h-4" />
+          <span>{item.data.address}</span>
+        </div>
+        <Separator className="my-4 bg-slate-300" />
+        <div className="flex gap-6 text-slate-400 text-sm">
+          {/* <ApartmentIcon icon={Scaling} data={`${item.data.size} mq`} /> */}
+          <ApartmentIcon icon={Bath} data={`${item.data.bathrooms}`} />
+          <ApartmentIcon icon={Bed} data={`${item.data.beds}`} />
+          <ApartmentIcon icon={Users} data={`${item.data.guests}`} />
+        </div>
       </div>
     </article>
   );

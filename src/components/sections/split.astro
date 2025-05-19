@@ -3,12 +3,13 @@ import { getImage } from 'astro:assets';
 import { PrimaryLabel } from "../patterns/label";
 import { PrimaryButton } from "../patterns/button";
 import type { SplitSectionProps as Props } from "@/content/static";
-const { label, title, description, button, image } = Astro.props
+import image from "@/content/home_about.avif"
+const { label, title, description, button } = Astro.props
 const imageAttrs = await getImage({
   src: image,
   alt: title,
-  width: 10,
-  height: 10,
+  width: 1000,
+  height: 1000,
   aspectRatio: '1:1',
   format: 'webp',
 });
@@ -20,10 +21,7 @@ const imageAttrs = await getImage({
   <div class="flex flex-col justify-between p-4 gap-8">
     <div>
       <PrimaryLabel {...label}/>
-      <h2 class="pt-4 font-semibold
-        text-3xl
-        md:text-5xl 
-        ">{title}</h2>
+      <h2 class="header-medium pt-4">{title}</h2>
     </div>
     <div>
       <p class="pb-4">{description}</p>

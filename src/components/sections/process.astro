@@ -1,88 +1,93 @@
 ---
+import { Check, } from "lucide-react";
 import { Image } from "astro:assets"
 import type { ProcessProps as Props} from "@/content/static"
 import { PrimaryButton } from "../patterns/button"
 import { PrimaryLabel } from "../patterns/label"
 const { label, button, title, tabOne, tabTwo, tabThree } = Astro.props
+import processOne from "@/content/processOne.jpg"
+import processTwo from "@/content/processTwo.jpg"
+import processThree from "@/content/processThree.jpg"
+import jamesBrown from "@/content/jamesBrown.jpg"
 ---
 <section class="container container-padding container-margin">
   <div class="grid md:grid-cols-2 items-end p-4">
-    <div>
+    <div class="pb-4">
       <PrimaryLabel {...label} />
-      <h2 class="font-semibold pt-4
-        text-3xl
-        md:text-5xl"
+      <h2 class="header-medium pt-4"
       >{title}</h2>
     </div>
-    <div class="flex items-end justify-end">
+    <div class="flex md:items-end md:justify-end">
       <PrimaryButton {...button} />
     </div>
   </div>
   <div class="pt-16 grid grid-cols-1 gap-16">
     <div class="p-4 items-center grid grid-cols-1 gap-4 text-center md:grid-cols-2 md:gap-16 md:text-left ">
       <div>
-        <h3 class="text-2xl font-semibold pb-2">{tabOne.title}</h3>
+        <h3 class="header-small pb-2">{tabOne.title}</h3>
         <p>{tabOne.description}</p>
       </div>
       <div class="relative pr-8">
         <Image 
           class="w-full rounded-4xl "
-          src="https://cdn.prod.website-files.com/65e5e5474c606fdc3f19a597/65e924f2f0b930d0e43bbb58_search-for-your-favorite-house-image-property-x-webflow-template.jpg" 
+          src={processOne} 
           alt="First" 
           width={500} 
           height={500} />
-        <div class="absolute w-[40%] right-0 left-auto top-auto bottom-[11%] h-[80%]">
-          <Image 
-            class="rounded-4xl w-full h-full object-cover"
-            src="https://cdn.prod.website-files.com/65e5e5474c606fdc3f19a597/65e924f2f0b930d0e43bbb58_search-for-your-favorite-house-image-property-x-webflow-template.jpg" 
-            alt="First" 
-            width={500} 
-            height={500} />
+        <div class="absolute w-[40%] right-0 left-auto top-auto bottom-[11%] h-[80%] bg-slate-50 rounded-4xl">
+          <div class="bg-green-100 p-4 rounded-2xl flex flex-col text-center justify-center items-center gap-4 h-full">
+            <Check className="text-green-500 h-4 w-4" />
+            <span>Richiesta inviata con successo! Ti risponderemo al più presto.</span>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="p-4 items-center grid grid-cols-1 gap-4 text-center md:grid-cols-2 md:gap-16 md:text-left ">
         <div>
-          <h3 class="text-2xl font-semibold pb-2">{tabTwo.title}</h3>
+          <h3 class="header-small pb-2">{tabTwo.title}</h3>
           <p>{tabTwo.description}</p>
         </div>
       <div class="relative pr-8">
         <Image 
           class="w-full rounded-4xl "
-          src="https://cdn.prod.website-files.com/65e5e5474c606fdc3f19a597/65e924f2f0b930d0e43bbb58_search-for-your-favorite-house-image-property-x-webflow-template.jpg" 
+          src={processTwo} 
           alt="First" 
           width={500} 
           height={500} />
-        <div class="absolute w-[80%] right-0 left-auto top-auto bottom-[11%] h-[20%]">
-          <Image 
-            class="rounded-4xl w-full h-full object-cover"
-            src="https://cdn.prod.website-files.com/65e5e5474c606fdc3f19a597/65e924f2f0b930d0e43bbb58_search-for-your-favorite-house-image-property-x-webflow-template.jpg" 
-            alt="First" 
-            width={500} 
-            height={500} />
+        <div class="absolute w-[80%] right-0 left-auto top-auto bottom-[11%] h-[15%] rounded-full bg-slate-50">
+          <div class="flex gap-4 items-center h-full p-4">
+            <Image 
+              class="rounded-full w-8 h-8 object-cover"
+              src={jamesBrown} 
+              alt="First" 
+              width={50} 
+              height={50} />
+            <div class="text-sm">
+              Nuova richiesta da James Brown. Questo mese 89% tasso di occupazione.
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="p-4 items-center grid grid-cols-1 gap-4 text-center md:grid-cols-2 md:gap-16 md:text-left ">
         <div>
-          <h3 class="text-2xl font-semibold pb-2">{tabThree.title}</h3>
+          <h3 class="header-small pb-2">{tabThree.title}</h3>
           <p>{tabThree.description}</p>
         </div>
       <div class="relative pr-8">
         <Image 
           class="w-full rounded-4xl "
-          src="https://cdn.prod.website-files.com/65e5e5474c606fdc3f19a597/65e924f2f0b930d0e43bbb58_search-for-your-favorite-house-image-property-x-webflow-template.jpg" 
+          src={processThree} 
           alt="First" 
           width={500} 
           height={500} />
         <div class="absolute w-[40%] right-0 left-auto top-auto bottom-[11%] h-[40%]">
-          <Image 
-            class="rounded-4xl w-full h-full object-cover"
-            src="https://cdn.prod.website-files.com/65e5e5474c606fdc3f19a597/65e924f2f0b930d0e43bbb58_search-for-your-favorite-house-image-property-x-webflow-template.jpg" 
-            alt="First" 
-            width={500} 
-            height={500} />
+          <div class="bg-green-100 p-4 rounded-2xl flex flex-col text-center justify-center items-center gap-2 h-full text-sm">
+            <div>Risultati di quest'anno:</div>
+            <div>92% di occupazione</div>
+            <div>4.9 recensioni medie</div>
+          </div>
         </div>
       </div>
     </div>

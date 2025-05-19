@@ -2,8 +2,8 @@
 import type { FooterProps as Props } from "@/content/static"
 const { businessData, pagesOne, pagesTwo, contacts, socials  } = Astro.props
 ---
-<footer class="container container-padding">
-  <div class="bg-slate-900 rounded-4xl text-slate-50 p-16 grid gap-16
+<footer class="container ">
+  <div class="card-spacing bg-slate-900 rounded-t-4xl md:rounded-4xl text-slate-50 grid gap-16
     grid-cols-1
     md:grid-cols-3
     ">
@@ -47,6 +47,6 @@ const { businessData, pagesOne, pagesTwo, contacts, socials  } = Astro.props
       </div>
     </div>
 
+  <div>Made with love by <a href="https://talesign.com">Talesign</a></div>
   </div>
-
 </footer>

@@ -27,7 +27,7 @@ export default function ApartmentGalleryCarousel({
           <CarouselItem key={index}>
             <div className="">
               <img
-                className="rounded-2xl"
+                className="rounded-2xl aspect-square object-cover w-full"
                 src={img.src}
                 alt={`Galleria appartamento ${index}`}
               />
