@@ -1,0 +1,27 @@
+---
+import '../styles/global.css';
+import SectionAnim from "@/components/patterns/scroll-effect.astro"
+import Layout from "@/layouts/main.astro"
+import Hero from  "@/components/sections/homepage/hero.astro"
+import Results from "@/components/sections/results.astro"
+import Services from "@/components/sections/featured_services.astro"
+import About from "@/components/sections/split.astro"
+import Apartments from "@/components/sections/featured_apartments.astro"
+import CallToAction from "@/components/sections/call-to-action.astro"
+import Process from "@/components/sections/process.astro"
+import Faqs from "@/components/sections/faqs.astro"
+
+import { homeMeta, homeHero, homeFeaturedservices, homeResults, homeSplitSection, homeFeaturedApartments, homeCallToAction, homeProcess, homeFaqs } from "@/content/static"
+---
+<Layout content={homeMeta.content}>
+  <div class="font-serif">
+  <Hero {...homeHero} />
+  <Results {...homeResults} />
+  <Services {...homeFeaturedservices} />
+  <About {...homeSplitSection} />
+  <Apartments {...homeFeaturedApartments} />
+  <CallToAction {...homeCallToAction} />
+  <Process {...homeProcess} />
+  <Faqs {...homeFaqs} />
+  </div>
+</Layout>

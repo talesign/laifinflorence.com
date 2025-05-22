@@ -14,6 +14,9 @@ importers:
       '@astrojs/react':
         specifier: ^4.2.7
         version: 4.2.7(@types/node@22.15.18)(@types/react-dom@19.1.5(@types/react@19.1.4))(@types/react@19.1.4)(jiti@2.4.2)(lightningcss@1.29.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@fontsource-variable/merriweather':
+        specifier: ^5.2.2
+        version: 5.2.2
       '@fontsource-variable/plus-jakarta-sans':
         specifier: ^5.2.5
         version: 5.2.5
@@ -411,6 +414,9 @@ packages:
 
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
+
+  '@fontsource-variable/merriweather@5.2.2':
+    resolution: {integrity: sha512-DZjuulo723T3TTf9ibAuWA2y1jsLlA+zDSA6j5AdnJF5rvpjlE9B/IRFiHt5rmKMdAS8tHF5GTEfQ9dwBRMtow==}
 
   '@fontsource-variable/plus-jakarta-sans@5.2.5':
     resolution: {integrity: sha512-nkAWzq+QWBSK+52HIlNCyoh5YXrZ/AwV1OqzxZz6VnPmsIpU68B1bf1YT8heRAJKY1kXNtWIJ9jJMYVaStgf+w==}
@@ -3958,6 +3964,8 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
 
   '@floating-ui/utils@0.2.9': {}
+
+  '@fontsource-variable/merriweather@5.2.2': {}
 
   '@fontsource-variable/plus-jakarta-sans@5.2.5': {}
 
