@@ -1,6 +1,6 @@
 ---
 name: "Luca"
-surname: "Moca"
+surname: "Mocali"
 image: "./luca-moca.jpg"
 bgImage: "./luca-moca.jpg"
 leadership: false

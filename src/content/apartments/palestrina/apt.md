@@ -5,6 +5,8 @@ images:
   - "./1.jpeg"
   - "./2.jpeg"
   - "./3.avif"
+  - "./4.avif"
+  - "./5.jpeg"
 bathrooms: 2
 beds: 4
 guests: 7

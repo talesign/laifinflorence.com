@@ -111,10 +111,10 @@ const canonicalLink = content.canonicalUrl || currentPageUrl;
     <meta name="twitter:site" content="@olivertaleghani" />
     <meta name="twitter:creator" content="@olivertaleghani" />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> {/* Make sure favicon.svg is in your public folder */}
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <ClientRouter />
   </head>
-  <body class="bg-slate-100 ">
+  <body class="bg-slate-100 relative">
     <Header client:load />
       <slot transition:name="root" transition:animate="fade" />
     <Footer {...footer} />

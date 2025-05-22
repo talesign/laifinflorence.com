@@ -23,7 +23,17 @@ import {
 } from "../ui/sheet";
 import { PrimaryButton } from "../patterns/button";
 
-const navItems = [
+type NavItems = {
+  title: string;
+  href: string;
+  subItems?: {
+    title: string;
+    href: string;
+    description: string;
+  }[];
+}[];
+
+const navItems: NavItems = [
   {
     title: "Servizi",
     href: "/servizi",
@@ -57,10 +67,12 @@ const navItems = [
 export default function Header() {
   return (
     <>
-      <header className="container z-50 w-full hidden xl:block">
+      <header className="container z-50 w-full hidden xl:block sticky top-0 bg-slate-100/95 backdrop-blur-md">
         <div className="content flex h-14 items-center justify-between">
           <a href="/" className="mr-6 flex items-center space-x-2">
-            <span className="font-bold text-lg">Laif Apartments</span>
+            <span className="font-serif font-bold text-lg">
+              Laif Apartments
+            </span>
           </a>
           <div className="grow">
             <NavigationMenu className="font-bold" orientation="horizontal">
@@ -73,15 +85,16 @@ export default function Header() {
                         <ChevronDown className="h-4 w-4" />
                       </PopoverTrigger>
                       <PopoverContent>
-                        {item.subItems.map((subItem) => (
-                          <ListItem
-                            key={subItem.title}
-                            href={subItem.href}
-                            title={subItem.title}
-                          >
-                            {subItem.description}
-                          </ListItem>
-                        ))}
+                        {item.subItems &&
+                          item.subItems.map((subItem) => (
+                            <ListItem
+                              key={subItem.title}
+                              href={subItem.href}
+                              title={subItem.title}
+                            >
+                              {subItem.description}
+                            </ListItem>
+                          ))}
                       </PopoverContent>
                     </Popover>
                   ) : (
@@ -101,10 +114,12 @@ export default function Header() {
         </div>
       </header>
 
-      <header className="container z-50 w-full block xl:hidden">
+      <header className="container z-50 w-full block xl:hidden sticky top-0 bg-slate-100/95 backdrop-blur-md">
         <div className="content flex h-14 items-center justify-between">
           <a href="/" className="mr-6 flex items-center space-x-2">
-            <span className="font-bold text-lg">Laif Apartments</span>
+            <span className="font-serif font-bold text-lg">
+              Laif Apartments
+            </span>
           </a>
           <Sheet>
             <SheetTrigger asChild>

@@ -138,19 +138,19 @@
     @apply mb-16 md:mb-20 xl:mb-24;
   }
   .header-big {
-    @apply font-semibold text-4xl md:text-5xl xl:text-6xl tracking-tighter leading-tight;
+    @apply font-serif font-semibold text-4xl md:text-5xl xl:text-6xl tracking-tighter leading-tight;
   }
   .header-medium {
-    @apply font-semibold text-3xl md:text-4xl xl:text-5xl tracking-tight leading-tight;
+    @apply font-serif font-semibold text-3xl md:text-4xl xl:text-5xl tracking-tight leading-tight;
   }
   .header-small {
-    @apply font-semibold text-2xl md:text-3xl xl:text-4xl tracking-tight leading-tight;
+    @apply font-serif font-semibold text-2xl md:text-3xl xl:text-4xl tracking-tight leading-tight;
   }
   .header-xsmall {
-    @apply font-semibold text-xl md:text-2xl xl:text-3xl tracking-tight leading-tight;
+    @apply font-serif font-semibold text-xl md:text-2xl xl:text-3xl tracking-tight leading-tight;
   }
   .card-spacing {
-    @apply p-8 md:p-16 xl:p-24;
+    @apply font-serif p-8 md:p-16 xl:p-24;
   }
   .scroll-effect {
     opacity: 0;

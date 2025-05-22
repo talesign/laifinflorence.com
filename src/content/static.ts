@@ -83,6 +83,12 @@ export const homeResults = {
     number: "92",
     unit: "%",
   } as ResultNumberProps,
+  resultThree: {
+    title: "Media recensioni",
+    description: "Su oltre 500 recensioni di ospiti da tutto il mondo.",
+    number: "4.9",
+    unit: "/5",
+  } as ResultNumberProps,
   title: "I nostri risultati: property management di successo a Firenze",
   description:
     "I numeri parlano chiaro: Laif Apartments è il partner strategico per la gestione dei tuoi affitti brevi a Firenze, assicurando professionalità e rendimenti elevati.",
@@ -132,8 +138,8 @@ export const homeFeaturedApartments = {
     href: "/appartamenti",
   } as ButtonProps,
   secondaryButton: {
-    label: "I servizi agli ospiti",
-    href: "/appartamenti#servizi",
+    label: "Guarda gli annunci su AirBnb",
+    href: "https://www.airbnb.it/users/show/16693046",
   } as ButtonProps,
 };
 

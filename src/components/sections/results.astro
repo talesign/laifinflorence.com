@@ -4,9 +4,8 @@ import ResultNumber from "@/components/patterns/result-number";
 import SimpleCard from "@/components/patterns/simple-card";
 import image from "@/content/team/lorenzo-ricchi.jpg"
 
-import type { ResultProps } from "@/content/static"
-type Props = ResultProps
-const { resultOne, resultTwo, title, description } = Astro.props
+import type { ResultProps as Props } from "@/content/static"
+const { resultOne, resultTwo, resultThree, title, description } = Astro.props
 
 const imageAttrs = await getImage({
   src: image,
@@ -34,5 +33,6 @@ const imageAttrs = await getImage({
   >
     <ResultNumber {...resultOne} />
     <ResultNumber {...resultTwo} />
+    <ResultNumber {...resultThree} />
   </div>
 </section>

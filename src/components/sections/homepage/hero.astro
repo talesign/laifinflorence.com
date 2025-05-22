@@ -8,24 +8,22 @@ const { title, description, primaryButton, secondaryButton } = Astro.props
 const imageAttrs = await getImage({
   src: image,
   alt: title,
-  width: 1500,
-  height: 1500,
-  aspectRatio: '1:1',
+  width: 2000,
+  height: 2000,
+  aspectRatio: '16:9',
   format: 'webp',
 });
 ---
 <section>
   <div
     class="container container-margin-hero grid text-slate-50
-    bg-bottom bg-contain md:bg-cover bg-no-repeat bg-[#eeeeee] rounded-b-4xl md:rounded-4xl"
-    style={{
-      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), url(${imageAttrs.src})`,
-    }}
+    bg-bottom bg-contain md:bg-cover bg-no-repeat bg-[#eeeeee] rounded-b-4xl md:rounded-4xl items-end md:items-stretch"
   >
+    <img class="col-start-1 col-end-1 row-start-1 row-end-1 rounded-b-4xl md:rounded-4xl" src={imageAttrs.src} {...imageAttrs.attributes} />
     <div
-      class="card-spacing grid items-center gap-8
-      pb-[300px] 
-      md:pb-[500px] xl:grid-cols-2"
+      class="grid p-8 md:p-16 gap-8 col-start-1 col-end-1 row-start-1 row-end-1
+      pb-[300px] md:rounded-4xl rounded-b-4xl
+      md:pb-[400px] xl:grid-cols-2 bg-slate-900/50 md:bg-slate-900/50"
     >
       <h1 class="header-big">{title}</h1>
       <div>

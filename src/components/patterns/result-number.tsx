@@ -14,14 +14,7 @@ export default function ResultNumber({
   return (
     <>
       <div>
-        <p
-          className="font-medium tracking-tight 
-          pb-1
-          md:pb-2
-          "
-        >
-          {title}
-        </p>
+        <p className="font-medium tracking-tight pb-1 md:pb-2">{title}</p>
         <div
           className="font-semibold tracking-wide
             text-4xl pb-2 

@@ -11,9 +11,9 @@ const apartmentsWithImage = await Promise.all(
         return await getImage({
           src: img,
           alt: apartment.data.name,
-          width: 500,
-          height: 500,
-          aspectRation: "16x9",
+          width: 1000,
+          height: 1000,
+          aspectRation: "1x1",
           format: "webp"
         })
       })
@@ -37,7 +37,7 @@ const { label, title, description } = Astro.props
     >{title}</h2>
     <p>{description}</p>
   </div>
-  <div class="grid gap-8 pt-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+  <div class="grid gap-12 py-12 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
     {apartmentsWithImage.map((apartment) => (
       <ApartmentCard item={apartment} client:load />
     ))}

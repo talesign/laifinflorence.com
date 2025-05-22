@@ -18,7 +18,9 @@ export default function ApartmentCard({ item }: ApartmentCardProps) {
     <article className="h-full flex flex-col justify-between">
       <div>
         <ApartmentGalleryCarousel gallery={item.images.gallery} />
-        <h3 className="header-xsmall pt-4 pb-2">{item.data.name}</h3>
+        <h3 className="header-xsmall pt-4 pb-2">
+          {item.data.name} {item.id}
+        </h3>
       </div>
       <div className="justify-self-end">
         <div className="flex gap-2 items-center">
@@ -26,11 +28,15 @@ export default function ApartmentCard({ item }: ApartmentCardProps) {
           <span>{item.data.address}</span>
         </div>
         <Separator className="my-4 bg-slate-300" />
-        <div className="flex gap-6 text-slate-400 text-sm">
-          {/* <ApartmentIcon icon={Scaling} data={`${item.data.size} mq`} /> */}
-          <ApartmentIcon icon={Bath} data={`${item.data.bathrooms}`} />
-          <ApartmentIcon icon={Bed} data={`${item.data.beds}`} />
-          <ApartmentIcon icon={Users} data={`${item.data.guests}`} />
+        <div className="flex justify-between items-center">
+          <div className="flex gap-6 text-slate-400 text-sm">
+            <ApartmentIcon icon={Bath} data={`${item.data.bathrooms}`} />
+            <ApartmentIcon icon={Bed} data={`${item.data.beds}`} />
+            <ApartmentIcon icon={Users} data={`${item.data.guests}`} />
+          </div>
+          <a href={item.data.link} className="underline text-sm">
+            Guarda su Airbnb
+          </a>
         </div>
       </div>
     </article>
