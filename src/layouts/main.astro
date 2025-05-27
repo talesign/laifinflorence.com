@@ -90,7 +90,7 @@ const twitterImage = content.twitterImage || "https://placehold.co/1200x630"
 
 const canonicalLink = content.canonicalUrl || currentPageUrl;
 
-const gAnalyticsId = import.meta.env.PUBLIC_GANALYTICS_ID;
+const id = import.meta.env.PUBLIC_GANALYTICS_ID;
 ---
 
 <html lang="it">
@@ -123,14 +123,13 @@ const gAnalyticsId = import.meta.env.PUBLIC_GANALYTICS_ID;
     <script
       type="text/partytown"
       is:inline
-      src={`https://www.googletagmanager.com/gtag/js?id=${gAnalyticsId}`}
+      src={`https://www.googletagmanager.com/gtag/js?id=${id}`}
     ></script>
     <script 
       type="text/partytown" 
       is:inline
-      define:vars={{id: gAnalyticsId}}
+      define:vars={{id: id}}
     >
-      console.log("helo")
       window.dataLayer = window.dataLayer || [];
       window.gtag = function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -140,8 +139,7 @@ const gAnalyticsId = import.meta.env.PUBLIC_GANALYTICS_ID;
         'ad_personalization': 'denied',
         'analytics_storage': 'denied'
       });
-      console.log("Setup finished");
-      gtag('config', gAnalyticsId);
+      gtag('config', id);
     </script>
     <ClientRouter />
   </head>
