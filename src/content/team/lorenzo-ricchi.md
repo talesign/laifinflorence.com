@@ -5,6 +5,6 @@ image: "./lorenzo-ricchi.webp"
 bgImage: "./lorenzo-ricchi-ext.webp"
 leadership: true
 position: "Amministratore"
-email: "l.ricchi@laifinflorence.com"
+email: "amministrazione.laif@gmail.com"
 phone: "380 696 4544"
 ---

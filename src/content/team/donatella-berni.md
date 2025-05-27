@@ -5,6 +5,6 @@ image: "./donatella-berni.webp"
 bgImage: "./donatella-berni-ext.webp"
 leadership: true
 position: "Amministratore"
-email: "d.alinari@laifinflorence.com"
+email: "amministrazione.laif@gmail.com"
 phone: "393 400 1791"
 ---

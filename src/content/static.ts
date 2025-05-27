@@ -249,8 +249,8 @@ export const footer = {
     {
       icon: Mail,
       title: "Email",
-      label: "info@laifinflorenze.com",
-      href: "mailto:info@laifinflorence.com",
+      label: "amministrazione.laif@gmail.com",
+      href: "mailto:amministrazione.laif@gmail.com",
     },
     {
       icon: Phone,
@@ -598,8 +598,8 @@ export const contactHeroSection = {
     {
       icon: Mail,
       title: "Inviaci un'email a:",
-      label: "info@laifinflorence.com",
-      link: "mailto:info@laifinflorence.com",
+      label: "amministrazione.laif@gmail.com",
+      link: "mailto:amministrazione.laif@gmail.com",
     },
     {
       icon: Phone,
@@ -615,14 +615,14 @@ export const contactHeroSection = {
     {
       icon: Briefcase,
       title: "Per questioni amministrative:",
-      label: "amministrazione@laifinflorence.com",
-      link: "mailto:amministrazione@laifinflorence.com",
+      label: "amministrazione.laif@gmail.com",
+      link: "mailto:amministrazione.laif@gmail.com",
     },
     {
       icon: Speech,
       title: "Per supporto e aiuto proprietari:",
-      label: "supporto@laifinflorence.com",
-      link: "mailto:supporto@laifinflorence.com",
+      label: "amministrazione.laif@gmail.com",
+      link: "mailto:amministrazione.laif@gmail.com",
     },
   ],
   form: {
