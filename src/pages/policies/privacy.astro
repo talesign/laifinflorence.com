@@ -1,0 +1,216 @@
+---
+import '@/styles/global.css';
+import Layout from "@/layouts/main.astro"
+import { type LayoutProps } from '@/layouts/main.astro';
+
+const metadata: LayoutProps = {
+  content: {
+    title: "Privacy policy",
+    description: "La privacy policy di laifinflorence.com"
+  }
+}
+
+import * as post from "@/content/policies/privacy.md"
+---
+<Layout content={metadata.content}>
+  <style is:global>
+  .article-content {
+    /* Base Text & Readability */
+    font-size: 1rem; /* Or your preferred base size, e.g., 18px, 20px */
+    line-height: 1.7;
+    color: #333; /* Dark grey for good contrast */
+    background-color: #fff; /* Assuming a light background */
+    -webkit-font-smoothing: antialiased; /* Smoother text rendering on WebKit */
+    -moz-osx-font-smoothing: grayscale; /* Smoother text rendering on Firefox */
+  }
+
+  /* Headings - Establish a clear hierarchy */
+  .article-content h1,
+  .article-content h2,
+  .article-content h3,
+  .article-content h4,
+  .article-content h5,
+  .article-content h6 {
+    margin-top: 1.5em; /* More space above headings */
+    margin-bottom: 0.75em;
+    line-height: 1.3;
+    font-weight: normal; /* Reset, rely on font-variation-settings or specific weights below */
+    color: #111; /* Darker color for headings */
+  }
+
+  .article-content h1 {
+    font-size: 2.5rem;
+    /* Example: font-variation-settings: "wght" 700; */
+  }
+
+  .article-content h2 {
+    font-size: 2rem;
+    /* Example: font-variation-settings: "wght" 650; */
+    border-bottom: 1px solid #eee; /* Subtle separator for H2 */
+    padding-bottom: 0.3em;
+  }
+
+  .article-content h3 {
+    font-size: 1.75rem;
+    /* Example: font-variation-settings: "wght" 600; */
+  }
+
+  .article-content h4 {
+    font-size: 1.5rem;
+    /* Example: font-variation-settings: "wght" 550; */
+  }
+
+  .article-content h5 {
+    font-size: 1.25rem;
+    /* Example: font-variation-settings: "wght" 500; */
+  }
+
+  .article-content h6 {
+    font-size: 1rem;
+    /* Example: font-variation-settings: "wght" 500; */
+    color: #555; /* Slightly lighter for less emphasis */
+  }
+
+  /* Paragraphs */
+  .article-content p {
+    margin-bottom: 1.25em;
+  }
+
+  /* Links */
+  .article-content a {
+    color: #007bff; /* Standard link blue, choose your own accent */
+    text-decoration: none;
+    transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+  }
+
+  .article-content a:hover,
+  .article-content a:focus {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+
+  /* Lists */
+  .article-content ul,
+  .article-content ol {
+    margin-bottom: 1.25em;
+    padding-left: 1.5em; /* Indentation for lists */
+  }
+
+  .article-content li {
+    margin-bottom: 0.5em;
+  }
+
+  .article-content ul ul,
+  .article-content ol ol,
+  .article-content ul ol,
+  .article-content ol ul {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  /* Blockquotes */
+  .article-content blockquote {
+    margin: 1.5em 0;
+    padding: 1em 1.5em;
+    border-left: 4px solid #007bff; /* Accent color for the border */
+    background-color: #f8f9fa; /* Slight background tint */
+    color: #555;
+    font-style: italic;
+  }
+
+  .article-content blockquote p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Code Blocks */
+  .article-content pre {
+    background-color: #2d2d2d; /* Dark background for code */
+    color: #f8f8f2; /* Light text for code */
+    padding: 1em;
+    margin-bottom: 1.5em;
+    overflow-x: auto; /* Handle long lines of code */
+    border-radius: 4px;
+    font-size: 0.9em; /* Slightly smaller for code */
+    line-height: 1.5;
+  }
+
+  .article-content code {
+    background-color: #e9ecef; /* Light background for inline code */
+    color: #c7254e; /* Color for inline code, often a pink/red */
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+
+  .article-content pre code { /* Reset inline styles when inside a pre block */
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+    border-radius: 0;
+    font-size: inherit;
+  }
+
+  /* Tables */
+  .article-content table {
+    width: 100%; /* Make table responsive within its container */
+    border-collapse: collapse;
+    margin-bottom: 1.5em;
+    font-size: 0.95em; /* Slightly smaller text for tables */
+  }
+
+  .article-content th,
+  .article-content td {
+    border: 1px solid #ddd; /* Light grey border for cells */
+    padding: 0.75em;
+    text-align: left;
+  }
+
+  .article-content th {
+    background-color: #f8f9fa; /* Light background for table headers */
+    font-weight: bold; /* Or use font-variation-settings for weight */
+    /* Example: font-variation-settings: "wght" 600; */
+  }
+
+  .article-content tr:nth-child(even) {
+    background-color: #fdfdfd; /* Subtle striping for table rows */
+  }
+
+  /* Horizontal Rule */
+  .article-content hr {
+    border: 0;
+    height: 1px;
+    background-color: #ddd;
+    margin: 2em 0;
+  }
+
+  /* Images */
+  .article-content img {
+    max-width: 100%; /* Make images responsive */
+    height: auto;
+    display: block; /* Remove extra space below image */
+    margin: 1.5em auto; /* Center images by default */
+    border-radius: 4px; /* Optional: slight rounding */
+  }
+
+  /* Figure & Figcaption (for images with captions) */
+  .article-content figure {
+      margin: 1.5em 0;
+  }
+
+  .article-content figcaption {
+      font-size: 0.9em;
+      color: #777;
+      text-align: center;
+      margin-top: 0.5em;
+  }
+
+  /* Avoid affecting nested elements if you have other styling */
+  .article-content .article-content {
+      /* Resets or adjustments if nesting this class */
+  }
+  </style>
+
+  <main class="container container-padding p-8 container-margin article-content">
+    <post.Content class="" />
+  </main>
+</Layout>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import Cookies from "js-cookie";
 import { COOKIE_NAME, type CookieConsent } from "./utils";
 import { z } from "zod";
+import Cookies from "js-cookie";
 
 const CookieConsentSchema = z
   .object({
@@ -35,106 +35,70 @@ const CookieConsentSchema = z
   })
   .strict();
 
-export default function ConsentScriptLoader() {
+interface UseConsentReturn {
+  consentState: CookieConsent | null;
+  isLoading: boolean;
+  isError: boolean;
+  error: string | null;
+}
+
+export const useConsent = (): UseConsentReturn => {
   const [consentState, setConsentState] = useState<CookieConsent | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [isError, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
+    setIsLoading(true);
+    setError(null);
+    setConsentState(null);
+
     try {
       const cookieValue = Cookies.get(COOKIE_NAME);
+
       if (!cookieValue) {
         console.warn(`Consent cookie "${COOKIE_NAME}" not found.`);
+        // No cookie doesn't mean an error in loading, just that no consent is stored yet.
+        // Depending on requirements, you might want to set a default state or handle this differently.
         setIsLoading(false);
         return;
       }
+
       const parsedJson: unknown = JSON.parse(cookieValue);
       const validationResult = CookieConsentSchema.safeParse(parsedJson);
 
-      if (validationResult.success) {
+      if (validationResult.success && validationResult.data) {
         setConsentState(validationResult.data);
       } else {
+        console.error(
+          "Invalid consent cookie format:",
+          validationResult.error?.issues,
+        );
         setError("Invalid consent cookie format.");
+        setIsError(true);
+        // Optionally, remove the invalid cookie
+        // Cookies.remove(COOKIE_NAME);
       }
     } catch (err) {
+      console.error("Failed to process consent cookie:", err);
       if (err instanceof SyntaxError) {
         setError("Consent cookie contains invalid JSON.");
+        setIsError(true);
+      } else if (err instanceof Error) {
+        setError(`Failed to process consent cookie: ${err.message}`);
+        setIsError(true);
       } else {
-        setError("Failed to process consent cookie.");
+        setError(
+          "An unknown error occurred while processing the consent cookie.",
+        );
+        setIsError(true);
       }
+      // Optionally, remove the problematic cookie
+      // Cookies.remove(COOKIE_NAME);
     } finally {
       setIsLoading(false);
     }
   }, []);
 
-  if (isLoading) {
-    return null;
-  }
-
-  if (error) {
-    console.error(
-      "ConsentScriptLoader: Error loading consent, not loading optional scripts.",
-      error,
-    );
-    return null;
-  }
-
-  return (
-    <>
-      {consentState?.consent.nece && (
-        <>
-          <script
-            type="text/partytown"
-            dangerouslySetInnerHTML={{
-              __html: `console.log('PARTY TOWN - Necessary script allowed');`,
-            }}
-          />
-        </>
-      )}
-
-      {consentState?.consent.anon && (
-        <script
-          type="text/partytown"
-          dangerouslySetInnerHTML={{
-            __html: `console.log('PARTY TOWN - Anonymous analytics ');`,
-          }}
-        ></script>
-      )}
-
-      {consentState?.consent.anal && (
-        <>
-          <script
-            type="text/partytown"
-            dangerouslySetInnerHTML={{
-              __html: `
-                console.log('PARTY TOWN - Analytics Consent Granted');
-              `,
-            }}
-          />
-        </>
-      )}
-
-      {consentState?.consent.mark && (
-        <>
-          <script
-            type="text/partytown"
-            dangerouslySetInnerHTML={{
-              __html: `
-                console.log('PARTY TOWN - Marketing Consent Granted');
-              `,
-            }}
-          />
-        </>
-      )}
-
-      {consentState?.consent.expe && (
-        <script
-          type="text/partytown"
-          dangerouslySetInnerHTML={{
-            __html: `console.log('PARTY TOWN - Experience allowed');`,
-          }}
-        />
-      )}
-    </>
-  );
-}
+  return { consentState, isLoading, error, isError };
+};

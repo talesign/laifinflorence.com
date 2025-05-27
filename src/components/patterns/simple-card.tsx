@@ -16,7 +16,7 @@ export default function SimpleCard({ img, title, description }: Props) {
       </div>
       <div className="md:w-[80%] xl:w-[90%]">
         <h2 className="font-semibold text-xl tracking-tight pb-2">{title}</h2>
-        <p className="text-slate-400">{description}</p>
+        <p className="text-slate-600">{description}</p>
       </div>
     </div>
   );

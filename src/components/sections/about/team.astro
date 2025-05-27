@@ -7,6 +7,15 @@ const { label, title, description } = Astro.props
 import { getCollection } from "astro:content";
 import { getImage } from "astro:assets";
 const teamCollection = await getCollection("team")
+teamCollection.sort((a,b) => {
+  if (a.data.leadership && !b.data.leadership) {
+    return -1
+  }
+  if (!a.data.leadership && b.data.leadership) {
+    return 1
+  }
+  return 0
+})
 const teamWithImages = await Promise.all(
   teamCollection.map(async (member) => {
     const imageAttrs = await getImage({

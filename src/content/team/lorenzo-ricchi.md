@@ -1,8 +1,8 @@
 ---
 name: "Lorenzo"
 surname: "Ricchi"
-image: "./lorenzo-ricchi.jpg"
-bgImage: "./lorenzo-ricchi.jpg"
+image: "./lorenzo-ricchi.webp"
+bgImage: "./lorenzo-ricchi-ext.webp"
 leadership: true
 position: "Amministratore"
 email: "l.ricchi@laifinflorence.com"

@@ -21,7 +21,7 @@ export default function ResultNumber({
             md:text-7xl md:pb-4"
         >
           <span className="">{number}</span>
-          <span className="text-slate-400">{unit}</span>
+          <span className="text-slate-600">{unit}</span>
         </div>
         <p className="text-sm text-slate-600">{description}</p>
       </div>

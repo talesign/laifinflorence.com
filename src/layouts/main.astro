@@ -1,11 +1,15 @@
 ---
 import { ClientRouter } from "astro:transitions";
+import CookieBanner from "@/components/cookie-banner/index";
+import ScriptLoaderBody from '@/components/cookie-banner/script-loader-body';
+import ScriptLoaderHead from '@/components/cookie-banner/script-loader-head';
+
 import '../styles/global.css';
 import '@fontsource-variable/plus-jakarta-sans';
-import '@fontsource-variable/merriweather'
-import Header from "@/components/sections/header"
-import Footer from "@/components/sections/footer.astro"
-import { footer } from "@/content/static"
+import '@fontsource-variable/merriweather';
+import Header from "@/components/sections/header";
+import Footer from "@/components/sections/footer.astro";
+import { footer } from "@/content/static";
 
 export interface LayoutProps {
   content: {
@@ -85,6 +89,8 @@ const twitterDescription = content.twitterDescription || description;
 const twitterImage = content.twitterImage || "https://placehold.co/1200x630"
 
 const canonicalLink = content.canonicalUrl || currentPageUrl;
+
+const gAnalyticsId = import.meta.env.PUBLIC_GANALYTICS_ID;
 ---
 
 <html lang="it">
@@ -112,11 +118,38 @@ const canonicalLink = content.canonicalUrl || currentPageUrl;
     <meta name="twitter:creator" content="@olivertaleghani" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+
+    <ScriptLoaderHead client:load />
+    <script
+      type="text/partytown"
+      is:inline
+      src={`https://www.googletagmanager.com/gtag/js?id=${gAnalyticsId}`}
+    ></script>
+    <script 
+      type="text/partytown" 
+      is:inline
+      define:vars={{id: gAnalyticsId}}
+    >
+      console.log("helo")
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied'
+      });
+      console.log("Setup finished");
+      gtag('config', gAnalyticsId);
+    </script>
     <ClientRouter />
   </head>
   <body class="bg-slate-100 relative">
     <Header client:load />
       <slot transition:name="root" transition:animate="fade" />
     <Footer {...footer} />
+    <CookieBanner client:load type="extended" />
+    <ScriptLoaderBody client:load />
   </body>
 </html>

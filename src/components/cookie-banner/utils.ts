@@ -2,6 +2,13 @@ import { v4 as uuidv4 } from "uuid";
 import Cookies from "js-cookie";
 export const COOKIE_NAME = "ts_consent";
 
+declare function gtag(...args: any[]): void;
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+    dataLayer?: any[];
+  }
+}
 export type CookieConsent = {
   timestamp: string;
   id: string;
@@ -36,6 +43,14 @@ export const saveCookies = async (
       mark: marketing,
     },
   };
+
+  // Update gtag.js consent
+  gtag("consent", "update", {
+    ad_user_data: marketing ? "granted" : "denied",
+    ad_personalization: marketing ? "granted" : "denied",
+    ad_storage: marketing ? "granted" : "denied",
+    analytics_storage: analytics ? "granted" : "denied",
+  });
   await setCookie(cookie);
 };
 

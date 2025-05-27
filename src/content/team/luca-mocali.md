@@ -1,10 +1,10 @@
 ---
 name: "Luca"
 surname: "Mocali"
-image: "./luca-moca.jpg"
-bgImage: "./luca-moca.jpg"
+image: "./luca-mocali.webp"
+bgImage: "./luca-mocali.webp"
 leadership: false
 position: "Hospitality specialist"
-email: "l.ricchi@laifinflorence.com"
+email: ""
 phone: ""
 ---

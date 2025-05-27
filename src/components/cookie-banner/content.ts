@@ -3,7 +3,7 @@ export const cookieBannerDictionary = {
     start: "Per maggiori dettagli, leggi la nostra ",
     link: {
       label: "cookie policy",
-      url: "/policies/cookie",
+      url: "/policies/cookies",
     },
     end: ".",
   },

@@ -122,7 +122,7 @@ export default function Header() {
             </span>
           </a>
           <Sheet>
-            <SheetTrigger asChild>
+            <SheetTrigger asChild aria-label="Menu di navigazione">
               <Button variant="secondary">
                 <AlignRight />
               </Button>

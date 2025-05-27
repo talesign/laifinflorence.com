@@ -41,7 +41,7 @@ const { businessData, pagesOne, pagesTwo, contacts, socials  } = Astro.props
       <div class="flex gap-4 items-center">
         {socials.map((social) => (
           <a class="hover:text-slate-50/50 transition-colors" href={social.link}>
-            <social.icon className="w-6 h-6" />
+            <social.icon className="w-6 h-6" aria-label={`Follow us on ${social.link}`} />
           </a>
         ))}
       </div>

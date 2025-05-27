@@ -8,8 +8,8 @@ const { title, description, primaryButton, secondaryButton } = Astro.props
 const imageAttrs = await getImage({
   src: image,
   alt: title,
-  width: 2000,
-  height: 2000,
+  width: 1200,
+  height: 800,
   aspectRatio: '16:9',
   format: 'webp',
 });
@@ -19,11 +19,11 @@ const imageAttrs = await getImage({
     class="container container-margin-hero grid text-slate-50
     bg-bottom bg-contain md:bg-cover bg-no-repeat bg-[#eeeeee] rounded-b-4xl md:rounded-4xl items-end md:items-stretch"
   >
-    <img class="col-start-1 col-end-1 row-start-1 row-end-1 rounded-b-4xl md:rounded-4xl" src={imageAttrs.src} {...imageAttrs.attributes} />
+    <img class="col-start-1 col-end-1 row-start-1 row-end-1 rounded-b-4xl md:w-full md:h-full md:rounded-4xl" src={imageAttrs.src} {...imageAttrs.attributes} />
     <div
       class="grid p-8 md:p-16 gap-8 col-start-1 col-end-1 row-start-1 row-end-1
       pb-[300px] md:rounded-4xl rounded-b-4xl
-      md:pb-[400px] xl:grid-cols-2 bg-slate-900/50 md:bg-slate-900/50"
+      md:pb-[400px] xl:grid-cols-2 bg-slate-900/70 md:bg-slate-900/70"
     >
       <h1 class="header-big">{title}</h1>
       <div>

@@ -1,10 +1,10 @@
 ---
 name: "Donatella"
 surname: "Sisi"
-image: "./donatella-sisi.jpg"
-bgImage: "./donatella-sisi.jpg"
+image: "./donatella-sisi.webp"
+bgImage: "./donatella-sisi.webp"
 leadership: false
 position: "Hospitality specialist"
-email: "l.ricchi@laifinflorence.com"
+email: ""
 phone: ""
 ---

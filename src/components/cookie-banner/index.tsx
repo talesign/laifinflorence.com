@@ -22,7 +22,7 @@ import {
 const BANNER_STYLE =
   "col-start-1 col-end-1 row-start-1 row-end-1 sm:w-full xl:w-[600px]";
 const BANNER_COLOR = "bg-white";
-const OVERLAY_COLOR = "bg-black/10";
+const OVERLAY_COLOR = "bg-slate-900/40";
 
 const BUTTON_STYLE = cn("w-full");
 const PRIMARY_BUTTON_STYLE = cn(BUTTON_STYLE, "");
@@ -50,7 +50,7 @@ export default function CookieBanner({ type }: CookieBannerProps) {
         {showBanner && (
           <div
             className={cn(
-              "w-screen h-screen grid items-end p-4",
+              "fixed top-0 w-screen h-screen grid items-end p-4 z-50",
               OVERLAY_COLOR,
             )}
           >
@@ -93,160 +93,188 @@ export default function CookieBanner({ type }: CookieBannerProps) {
   }
 
   return (
-    <div className={cn("w-screen h-screen grid items-end p-4", OVERLAY_COLOR)}>
+    <>
       {showBanner && (
-        <Card className={cn(BANNER_STYLE, BANNER_COLOR)}>
-          <CardHeader>
-            <CardTitle className="text-xl font-bold">
-              {dict.extended.title}
-            </CardTitle>
-            <CardDescription>
-              {dict.extended.message} <ViewCookiePolicy />
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 gap-4">
+        <div
+          className={cn(
+            "fixed top-0 left-0 w-screen h-screen grid items-end p-4 z-50",
+            OVERLAY_COLOR,
+          )}
+        >
+          <Card className={cn(BANNER_STYLE, BANNER_COLOR)}>
+            <CardHeader>
+              <CardTitle className="text-xl font-bold">
+                {dict.extended.title}
+              </CardTitle>
+              <CardDescription>
+                {dict.extended.message} <ViewCookiePolicy />
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 gap-4">
+                <Button
+                  className={cn(BUTTON_STYLE, PRIMARY_BUTTON_STYLE)}
+                  onClick={async () => {
+                    await saveCookies(true, true, true);
+                    setShowBanner(false);
+                  }}
+                >
+                  {dict.extended.accept}
+                </Button>
+                <Button
+                  className={cn(BUTTON_STYLE, PRIMARY_BUTTON_STYLE)}
+                  onClick={async () => {
+                    await saveCookies(false, false, false);
+                    setShowBanner(false);
+                  }}
+                >
+                  {dict.extended.refuse}
+                </Button>
+              </div>
+            </CardContent>
+            <CardFooter>
               <Button
-                className={cn(BUTTON_STYLE, PRIMARY_BUTTON_STYLE)}
-                onClick={async () => {
-                  await saveCookies(true, true, true);
+                onClick={() => {
                   setShowBanner(false);
+                  setShowPreferences(true);
                 }}
+                variant="secondary"
+                className={cn(BUTTON_STYLE, SECONDARY_BUTTON_STYLE)}
               >
-                {dict.extended.accept}
+                {dict.extended.personlize}
               </Button>
-              <Button
-                className={cn(BUTTON_STYLE, PRIMARY_BUTTON_STYLE)}
-                onClick={async () => {
-                  await saveCookies(false, false, false);
-                  setShowBanner(false);
-                }}
-              >
-                {dict.extended.refuse}
-              </Button>
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button
-              onClick={() => {
-                setShowBanner(false);
-                setShowPreferences(true);
-              }}
-              variant="secondary"
-              className={cn(BUTTON_STYLE, SECONDARY_BUTTON_STYLE)}
-            >
-              {dict.extended.personlize}
-            </Button>
-          </CardFooter>
-        </Card>
+            </CardFooter>
+          </Card>
+        </div>
       )}
       {showPreferences && (
-        <Card className={cn(BANNER_STYLE, BANNER_COLOR)}>
-          <CardHeader>
-            <Button
-              onClick={() => {
-                setShowBanner(true);
-                setShowPreferences(false);
-              }}
-              variant="secondary"
-              className={cn(SECONDARY_BUTTON_STYLE, "mb-4 w-auto")}
-            >
-              {dict.extended.preferences.back}
-            </Button>
-            <CardTitle className="text-xl font-bold">
-              {dict.extended.preferences.title}
-            </CardTitle>
-            <CardDescription>
-              {dict.extended.preferences.description}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Accordion type="multiple">
-              {/* necessary */}
-              <AccordionItem value={dict.extended.preferences.necessary.title}>
-                <div className="flex gap-4 w-full justify-between items-center">
-                  <AccordionTrigger className="w-full">
-                    {dict.extended.preferences.necessary.title}
-                  </AccordionTrigger>
-                  <Switch checked={true} disabled />
-                </div>
-                <AccordionContent>
-                  {dict.extended.preferences.necessary.description}
-                </AccordionContent>
-              </AccordionItem>
-
-              {/* anonAnalytics */}
-              <AccordionItem
-                value={dict.extended.preferences.anonAnalytics.title}
+        <div
+          className={cn(
+            "fixed top-0 left-0 w-screen h-screen grid items-end p-4 z-50",
+            OVERLAY_COLOR,
+          )}
+        >
+          <Card className={cn(BANNER_STYLE, BANNER_COLOR)}>
+            <CardHeader>
+              <Button
+                onClick={() => {
+                  setShowBanner(true);
+                  setShowPreferences(false);
+                }}
+                variant="secondary"
+                className={cn(SECONDARY_BUTTON_STYLE, "mb-4 w-auto")}
               >
-                <div className="flex gap-4 w-full justify-between items-center">
-                  <AccordionTrigger className="w-full">
-                    {dict.extended.preferences.anonAnalytics.title}
-                  </AccordionTrigger>
-                  <Switch checked={true} disabled />
-                </div>
-                <AccordionContent>
-                  {dict.extended.preferences.anonAnalytics.description}
-                </AccordionContent>
-              </AccordionItem>
+                {dict.extended.preferences.back}
+              </Button>
+              <CardTitle className="text-xl font-bold">
+                {dict.extended.preferences.title}
+              </CardTitle>
+              <CardDescription>
+                {dict.extended.preferences.description}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Accordion type="multiple">
+                {/* necessary */}
+                <AccordionItem
+                  value={dict.extended.preferences.necessary.title}
+                >
+                  <div className="flex gap-4 w-full justify-between items-center">
+                    <AccordionTrigger className="w-full">
+                      {dict.extended.preferences.necessary.title}
+                    </AccordionTrigger>
+                    <Switch checked={true} disabled />
+                  </div>
+                  <AccordionContent>
+                    {dict.extended.preferences.necessary.description}
+                  </AccordionContent>
+                </AccordionItem>
 
-              {/* experience */}
-              <AccordionItem value={dict.extended.preferences.experience.title}>
-                <div className="flex gap-4 w-full justify-between items-center">
-                  <AccordionTrigger className="w-full">
-                    {dict.extended.preferences.experience.title}
-                  </AccordionTrigger>
-                  <Switch
-                    checked={experience}
-                    onCheckedChange={setExperience}
-                  />
-                </div>
-                <AccordionContent>
-                  {dict.extended.preferences.experience.description}
-                </AccordionContent>
-              </AccordionItem>
+                {/* anonAnalytics */}
+                <AccordionItem
+                  value={dict.extended.preferences.anonAnalytics.title}
+                >
+                  <div className="flex gap-4 w-full justify-between items-center">
+                    <AccordionTrigger className="w-full">
+                      {dict.extended.preferences.anonAnalytics.title}
+                    </AccordionTrigger>
+                    <Switch checked={true} disabled />
+                  </div>
+                  <AccordionContent>
+                    {dict.extended.preferences.anonAnalytics.description}
+                  </AccordionContent>
+                </AccordionItem>
 
-              {/* analytics */}
-              <AccordionItem value={dict.extended.preferences.analytics.title}>
-                <div className="flex gap-4 w-full justify-between items-center">
-                  <AccordionTrigger className="w-full">
-                    {dict.extended.preferences.analytics.title}
-                  </AccordionTrigger>
-                  <Switch checked={analytics} onCheckedChange={setAnalytics} />
-                </div>
-                <AccordionContent>
-                  {dict.extended.preferences.analytics.description}
-                </AccordionContent>
-              </AccordionItem>
+                {/* experience */}
+                <AccordionItem
+                  value={dict.extended.preferences.experience.title}
+                >
+                  <div className="flex gap-4 w-full justify-between items-center">
+                    <AccordionTrigger className="w-full">
+                      {dict.extended.preferences.experience.title}
+                    </AccordionTrigger>
+                    <Switch
+                      checked={experience}
+                      onCheckedChange={setExperience}
+                    />
+                  </div>
+                  <AccordionContent>
+                    {dict.extended.preferences.experience.description}
+                  </AccordionContent>
+                </AccordionItem>
 
-              {/*marketing*/}
-              <AccordionItem value={dict.extended.preferences.marketing.title}>
-                <div className="flex gap-4 w-full justify-between items-center">
-                  <AccordionTrigger className="w-full">
-                    {dict.extended.preferences.marketing.title}
-                  </AccordionTrigger>
-                  <Switch checked={marketing} onCheckedChange={setMarketing} />
-                </div>
-                <AccordionContent>
-                  {dict.extended.preferences.marketing.description}
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </CardContent>
-          <CardFooter>
-            <Button
-              className={cn(BUTTON_STYLE, PRIMARY_BUTTON_STYLE)}
-              onClick={async () => {
-                await saveCookies(experience, analytics, marketing);
-                setShowPreferences(false);
-              }}
-            >
-              {dict.extended.preferences.save}
-            </Button>
-          </CardFooter>
-        </Card>
+                {/* analytics */}
+                <AccordionItem
+                  value={dict.extended.preferences.analytics.title}
+                >
+                  <div className="flex gap-4 w-full justify-between items-center">
+                    <AccordionTrigger className="w-full">
+                      {dict.extended.preferences.analytics.title}
+                    </AccordionTrigger>
+                    <Switch
+                      checked={analytics}
+                      onCheckedChange={setAnalytics}
+                    />
+                  </div>
+                  <AccordionContent>
+                    {dict.extended.preferences.analytics.description}
+                  </AccordionContent>
+                </AccordionItem>
+
+                {/*marketing*/}
+                <AccordionItem
+                  value={dict.extended.preferences.marketing.title}
+                >
+                  <div className="flex gap-4 w-full justify-between items-center">
+                    <AccordionTrigger className="w-full">
+                      {dict.extended.preferences.marketing.title}
+                    </AccordionTrigger>
+                    <Switch
+                      checked={marketing}
+                      onCheckedChange={setMarketing}
+                    />
+                  </div>
+                  <AccordionContent>
+                    {dict.extended.preferences.marketing.description}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </CardContent>
+            <CardFooter>
+              <Button
+                className={cn(BUTTON_STYLE, PRIMARY_BUTTON_STYLE)}
+                onClick={async () => {
+                  await saveCookies(experience, analytics, marketing);
+                  setShowPreferences(false);
+                }}
+              >
+                {dict.extended.preferences.save}
+              </Button>
+            </CardFooter>
+          </Card>
+        </div>
       )}
-    </div>
+    </>
   );
 }
 

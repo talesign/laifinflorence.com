@@ -1,8 +1,8 @@
 ---
 name: "Donatella"
-surname: "Alinari"
-image: "./donatella-alinari.jpg"
-bgImage: "./donatella-alinari.jpg"
+surname: "Berni"
+image: "./donatella-berni.webp"
+bgImage: "./donatella-berni-ext.webp"
 leadership: true
 position: "Amministratore"
 email: "d.alinari@laifinflorence.com"
