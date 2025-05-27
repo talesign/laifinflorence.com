@@ -119,6 +119,7 @@ const id = import.meta.env.PUBLIC_GANALYTICS_ID;
 
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 
+    <ClientRouter />
     <ScriptLoaderHead client:load />
     <script
       type="text/partytown"
@@ -141,7 +142,6 @@ const id = import.meta.env.PUBLIC_GANALYTICS_ID;
       });
       gtag('config', id);
     </script>
-    <ClientRouter />
   </head>
   <body class="bg-slate-100 relative">
     <Header client:load />
