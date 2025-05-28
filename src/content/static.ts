@@ -255,8 +255,14 @@ export const footer = {
     {
       icon: Phone,
       title: "Cellulare",
-      label: "(+39) 380 696 4544",
+      label: "(+39) 380 696 4544 | Lorenzo",
       href: "tel:+393806964544",
+    },
+    {
+      icon: Phone,
+      title: "Cellulare",
+      label: "(+39) 393 400 1791 | Donatella",
+      href: "tel:+393934001791",
     },
   ],
   socials: [
