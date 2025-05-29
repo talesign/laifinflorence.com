@@ -45,7 +45,7 @@ export default function Turnstile() {
   }, []);
 
   useEffect(() => {
-    if (!ref.current || !window.turnstile) {
+    if (!ref.current || !window.turnstile || !isScriptLoaded) {
       console.warn("Turnstile script not loaded.");
       return;
     }
