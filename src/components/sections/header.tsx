@@ -131,7 +131,7 @@ export default function Header() {
               <SheetHeader className="bg-accent">
                 <SheetTitle>Laif Apartments</SheetTitle>
                 <SheetDescription>
-                  Lorem ipsum sit dolor et amet
+                  Gestione professionale appartamenti a Firenze
                 </SheetDescription>
               </SheetHeader>
               <nav>
