@@ -4,6 +4,7 @@ import { FieldErrors } from "./field-errors";
 
 declare global {
   interface Window {
+    onloadTurnstileCallback: () => void;
     turnstile: {
       render: (
         container: string | HTMLElement,
@@ -29,6 +30,19 @@ export default function Turnstile() {
   const key = import.meta.env.PUBLIC_TURNSTILE_CLIENT_KEY;
   const ref = useRef<HTMLDivElement>(null);
   const [widgetId, setWidgetId] = useState<string | null>(null);
+  const [isScriptLoaded, setIsScriptLoaded] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (window.turnstile) {
+      setIsScriptLoaded(true);
+      return;
+    }
+
+    window.onloadTurnstileCallback = () => {
+      console.log("Turnstile script loaded via callback.");
+      setIsScriptLoaded(true);
+    };
+  }, []);
 
   useEffect(() => {
     if (!ref.current || !window.turnstile) {
@@ -68,7 +82,7 @@ export default function Turnstile() {
         setWidgetId(null);
       }
     };
-  }, []);
+  }, [isScriptLoaded]);
 
   return (
     <>
@@ -78,7 +92,7 @@ export default function Turnstile() {
         </div>
       )}
       <script
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onloadTurnstileCallback"
         async
         defer
       />

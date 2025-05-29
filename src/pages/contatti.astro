@@ -6,6 +6,6 @@ import Layout from "@/layouts/main.astro"
 import { contactMeta, contactHeroSection, homeFaqs } from '@/content/static';
 ---
 <Layout content={contactMeta.content}>
-  <Hero {...contactHeroSection} client:load />
+  <Hero {...contactHeroSection} />
   <Faqs {...homeFaqs} />
 </Layout>

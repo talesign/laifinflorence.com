@@ -8,7 +8,7 @@ import Faqs from "@/components/sections/faqs.astro"
 import { consultingMeta, consultingHero, homeProcess, homeResults, homeFaqs } from '@/content/static';
 ---
 <Layout content={consultingMeta.content}>
-  <Hero {...consultingHero} client:load />
+  <Hero {...consultingHero} />
   <Results {...homeResults} />
   <Process {...homeProcess} />
   <Faqs {...homeFaqs} />
