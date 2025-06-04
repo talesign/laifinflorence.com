@@ -120,34 +120,34 @@ const id = import.meta.env.PUBLIC_GANALYTICS_ID;
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 
     <!-- <ClientRouter /> -->
-    <ScriptLoaderHead client:load />
-    <script
-      type="text/partytown"
-      is:inline
-      src={`https://www.googletagmanager.com/gtag/js?id=${id}`}
-    ></script>
-    <script 
-      type="text/partytown" 
-      is:inline
-      define:vars={{id: id}}
-    >
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('consent', 'default', {
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'analytics_storage': 'denied'
-      });
-      gtag('config', id);
-    </script>
+    <!-- <ScriptLoaderHead client:load /> -->
+    <!-- <script -->
+    <!--   type="text/partytown" -->
+    <!--   is:inline -->
+    <!--   src={`https://www.googletagmanager.com/gtag/js?id=${id}`} -->
+    <!-- ></script> -->
+    <!-- <script  -->
+    <!--   type="text/partytown"  -->
+    <!--   is:inline -->
+    <!--   define:vars={{id: id}} -->
+    <!-- > -->
+    <!--   window.dataLayer = window.dataLayer || []; -->
+    <!--   window.gtag = function gtag(){dataLayer.push(arguments);} -->
+    <!--   gtag('js', new Date()); -->
+    <!--   gtag('consent', 'default', { -->
+    <!--     'ad_storage': 'denied', -->
+    <!--     'ad_user_data': 'denied', -->
+    <!--     'ad_personalization': 'denied', -->
+    <!--     'analytics_storage': 'denied' -->
+    <!--   }); -->
+    <!--   gtag('config', id); -->
+    <!-- </script> -->
   </head>
   <body class="bg-slate-100 relative">
     <Header client:load />
       <slot transition:name="root" transition:animate="fade" />
     <Footer {...footer} />
-    <CookieBanner client:load type="extended" />
-    <ScriptLoaderBody client:load />
+    <!-- <CookieBanner client:load type="extended" /> -->
+    <!-- <ScriptLoaderBody client:load /> -->
   </body>
 </html>
