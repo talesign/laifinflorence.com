@@ -19,7 +19,7 @@ export default function ApartmentCard({ item }: ApartmentCardProps) {
       <div>
         <ApartmentGalleryCarousel gallery={item.images.gallery} />
         <h3 className="header-xsmall pt-4 pb-2">
-          {item.data.name} {item.id}
+          {item.data.name}
         </h3>
       </div>
       <div className="justify-self-end">
