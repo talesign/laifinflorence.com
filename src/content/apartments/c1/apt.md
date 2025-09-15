@@ -1,15 +1,15 @@
 ---
-name: "Firenze, Italia. Intero alloggio: appartamento"
-address: "Via Doni"
+name: "Tranquillo appartamento in centro con splendida terrazza privata"
+address: "Via Cavour"
 images:
-  - "./1.avif"
-  - "./2.avif"
+  - "./1.jpeg"
+  - "./2.jpeg"
   - "./3.jpeg"
   - "./4.avif"
-  - "./5.avif"
+  - "./5.jpeg"
 bathrooms: 2
-beds: 3
-guests: 5
+beds: 2
+guests: 4
 featured: false
-link: "https://www.airbnb.it/rooms/1505851878238475425"
+link: "https://www.airbnb.it/rooms/1169486079610268899"
 ---
